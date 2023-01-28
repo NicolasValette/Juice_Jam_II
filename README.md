@@ -11,3 +11,5 @@ The game must be Juicy, ant the theme for this game jam : "PAYING THE PRIZE".
 * Ricardo
 * Marc
 * Nicolas
+
+# Release version

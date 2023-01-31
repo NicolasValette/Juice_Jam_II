@@ -12,11 +12,12 @@ public class RythmManager : MonoBehaviour
     [SerializeField]
     private float _threshold;
 
-    public float _secondePerBeat;          //Number of second for each beat.
-    public float _songPositionInSeconds;   //Position in the active song, in seconds.
-    public float _songPositionInBeat;      //Position in the active song, in beat.
-    public float _dspSongTime;
-    //Seconds since the start opf the songs
+    public float _secondePerBeat;           //Number of second for each beat.
+    public float _songPositionInSeconds;    //Position in the active song, in seconds.
+    public float _songPositionInBeat;       //Position in the active song, in beat.
+    public float _songDspTime;              //Time since the start of the song in seconds
+    public float _songTime;
+    public float _songTimeInBeats;
 
     public int _previousBeat;
 
@@ -31,7 +32,7 @@ public class RythmManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _songPositionInSeconds = (float)AudioSettings.dspTime - _dspSongTime;
+        _songPositionInSeconds = (float)AudioSettings.dspTime - _songDspTime;
         _songPositionInBeat = _songPositionInSeconds / _secondePerBeat;
         if (_previousBeat + 1 <= _songPositionInBeat)
         {
@@ -45,7 +46,10 @@ public class RythmManager : MonoBehaviour
         musicSource = GetComponent<AudioSource>();
 
         _secondePerBeat = 60f / _songBPM;
-        _dspSongTime = (float)AudioSettings.dspTime;
+        _songDspTime = (float)AudioSettings.dspTime;
+        _songTime = musicSource.clip.length;
+        _songTimeInBeats = _songTime * _secondePerBeat;
+
         musicSource.Play();
         _previousBeat = 0;
     

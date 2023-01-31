@@ -15,9 +15,9 @@ public class MusicData : ScriptableObject
     int bPM = 0;
     public int _bPM { get { return bPM; } }
 
- //   [SerializeField]
- //   AudioClip timeLine;
- //   public Timeline _timeLine { get { return timeLine; } }
+    [SerializeField]
+    TimelineAsset timeLine;
+    public TimelineAsset _timeLine { get { return timeLine; } }
 
     [Serializable]
     public class BeatData
@@ -28,8 +28,7 @@ public class MusicData : ScriptableObject
 
         [SerializeField]
         EventManager.Events eventAction = EventManager.Events.None;
-        public EventManager.Events _eventAction { get { return eventAction; }
-    }
+        public EventManager.Events _eventAction { get { return eventAction; } }
     }
 
     [SerializeField]

@@ -11,6 +11,14 @@ public class RythmManager : MonoBehaviour
     private AudioSource musicSource;
     [SerializeField]
     private float _threshold;
+    [SerializeField]
+    public Transform SpawnNotePos;
+    [SerializeField]
+    public Transform RemoveNotePos;
+    [SerializeField]
+    public float BeatsShown { get; private set; } = 2f;
+    [SerializeField]
+    private GameObject _notePrefab;
 
     public float _secondePerBeat;           //Number of second for each beat.
     public float _songPositionInSeconds;    //Position in the active song, in seconds.
@@ -19,7 +27,9 @@ public class RythmManager : MonoBehaviour
     public float _songTime;
     public float _songTimeInBeats;
 
-    public int _previousBeat;
+    public float _previousBeat;
+    [SerializeField]
+    public List<int> list { get; private set; }
 
     public static RythmManager Instance;
     // Start is called before the first frame update
@@ -37,8 +47,13 @@ public class RythmManager : MonoBehaviour
         if (_previousBeat + 1 <= _songPositionInBeat)
         {
             _previousBeat++;
+            GameObject note;
+            note = Instantiate(_notePrefab, SpawnNotePos.position, SpawnNotePos.rotation);
+            
             EventManager.TriggerEvent(EventManager.Events.OnBeatChange);
         }
+        
+        
     }
 
     private void InitAttributes()

@@ -8,7 +8,11 @@ public class EventManager
     {
         None,
         OnBeatChange,
-        OnNoteHit
+        OnNoteHit,
+        ItemSpawn,
+        EnnemySpawn,
+        BiggerEnnemy,
+        Boss
     }
     private Dictionary<Events, Action> eventDictionnary;
 

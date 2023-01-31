@@ -8,7 +8,7 @@ public class RythmManager : MonoBehaviour
     [SerializeField]
     private float _songBPM;                 //Beat per minute of the song.
     [SerializeField]
-    private AudioSource musicSource;
+    private MusicData _music;
     [SerializeField]
     private float _threshold;
     [SerializeField]
@@ -22,6 +22,7 @@ public class RythmManager : MonoBehaviour
     [SerializeField]
     private float _perfectThreshold = 0.05f;
 
+    private AudioSource musicSource;
     private int _actualCombo = 0;
     public int Combo
     {
@@ -79,7 +80,7 @@ public class RythmManager : MonoBehaviour
     private void InitAttributes()
     {
         musicSource = GetComponent<AudioSource>();
-
+        musicSource.clip = _music._audioClip;
         _secondePerBeat = 60f / _songBPM;
         _songDspTime = (float)AudioSettings.dspTime;
         _songTime = musicSource.clip.length;

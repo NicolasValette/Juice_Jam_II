@@ -6,8 +6,9 @@ public class EventManager
 {
     public enum Events
     {
-      OnBeatChange,
-      OnNoteHit
+        None,
+        OnBeatChange,
+        OnNoteHit
     }
     private Dictionary<Events, Action> eventDictionnary;
 
@@ -31,7 +32,7 @@ public class EventManager
     }
     public static void StartListening(Events eventName, Action action)
     {
-       
+
         //Debug.Log("Start Listening event : " + eventName + ". Action : " + action.ToString());
         if (Instance.eventDictionnary.TryGetValue(eventName, out Action eventToListen))
         {
@@ -46,7 +47,7 @@ public class EventManager
     }
     public static void StopListening(Events eventName, Action action)
     {
-       
+
         //Debug.Log("Stop Listening event : " + eventName + ". Action : " + action.ToString());
         if (Instance.eventDictionnary.TryGetValue(eventName, out Action eventToStopListen))
         {
@@ -58,7 +59,7 @@ public class EventManager
     public static void TriggerEvent(Events eventName)
     {
         Action eventToTrigger;
-       //Debug.Log("Try to Invoke : " + eventName);
+        //Debug.Log("Try to Invoke : " + eventName);
         if (Instance.eventDictionnary.TryGetValue(eventName, out eventToTrigger))
         {
             //Debug.Log("Action : " + eventToTrigger.ToString());

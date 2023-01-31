@@ -34,7 +34,8 @@ public class AudioVisualizer : MonoBehaviour
     void Start()
     {
         //The line should have the same number of points as the number of samples  
-        lRenderer.SetVertexCount(samples.Length);
+        //lRenderer.SetVertexCount(samples.Length);
+        lRenderer.positionCount = samples.Length;
         //The cubesTransform array should be initialized with the same length as the samples array  
         cubesTransform = new Transform[samples.Length];
         //Center the audio visualization line at the X axis, according to the samples array length  

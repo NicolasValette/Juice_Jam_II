@@ -28,8 +28,7 @@ public class MusicData : ScriptableObject
 
         [SerializeField]
         EventManager.Events eventAction = EventManager.Events.None;
-        public EventManager.Events _eventAction { get { return eventAction; }
-    }
+        public EventManager.Events _eventAction { get { return eventAction; } }
     }
 
     [SerializeField]

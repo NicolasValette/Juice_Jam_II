@@ -6,9 +6,11 @@ public class SphreRythmScript : MonoBehaviour
 {
     private MeshRenderer _meshRenderer;
     private bool isColor2;
+   
     // Start is called before the first frame update
     void Start()
     {
+        
         _meshRenderer = GetComponent<MeshRenderer>();
     }
     private void OnEnable()

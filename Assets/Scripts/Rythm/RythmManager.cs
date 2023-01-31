@@ -19,6 +19,24 @@ public class RythmManager : MonoBehaviour
     public float BeatsShown { get; private set; } = 2f;
     [SerializeField]
     private GameObject _notePrefab;
+    [SerializeField]
+    private float _perfectThreshold = 0.05f;
+
+    private int _actualCombo = 0;
+    public int Combo
+    {
+        get { return _actualCombo; }
+    }
+    private int _numberOfGood = 0;
+    public int Good
+    {
+        get { return _numberOfGood; }
+    }
+    private int _numberOfPerfect = 0;
+    public int Perfect
+    {
+        get { return _numberOfPerfect; }
+    }
 
     public float _secondePerBeat;           //Number of second for each beat.
     public float _songPositionInSeconds;    //Position in the active song, in seconds.
@@ -28,10 +46,9 @@ public class RythmManager : MonoBehaviour
     public float _songTimeInBeats;
 
     public float _previousBeat;
-    [SerializeField]
-    public List<int> list { get; private set; }
 
     public static RythmManager Instance;
+    private Queue<GameObject> _noteQueue;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,11 +66,14 @@ public class RythmManager : MonoBehaviour
             _previousBeat++;
             GameObject note;
             note = Instantiate(_notePrefab, SpawnNotePos.position, SpawnNotePos.rotation);
-            
+            if (_noteQueue.Count >= BeatsShown)
+            {
+                GameObject missedNote = _noteQueue.Dequeue();
+                missedNote.GetComponent<MoveNote>().Miss();
+            }
+            _noteQueue.Enqueue(note);
             EventManager.TriggerEvent(EventManager.Events.OnBeatChange);
         }
-        
-        
     }
 
     private void InitAttributes()
@@ -67,18 +87,45 @@ public class RythmManager : MonoBehaviour
 
         musicSource.Play();
         _previousBeat = 0;
-    
+        _noteQueue = new Queue<GameObject>();
     }
     public bool IsNoteCorrectlyHit()
     {
+        GameObject actualNote = _noteQueue.Peek();
+        float noteBeat = actualNote.GetComponent<MoveNote>().BeatOfNote - 1f;        //Because the math is done 1 beat behind;
         //Debug.Log("Pos : " + _songPositionInBeat + ", Treshold : " + _threshold + ", previous : " + _previousBeat +
         //    "\ntest : _songPositionInBeat >= _previousBeat - _threshold || _songPositionInBeat <= _previousBeat + _threshold = " +
         //    "\n "+_songPositionInBeat+" >= "+_previousBeat+ "-" +_threshold+" && "+_songPositionInBeat +"<=" +_previousBeat+" + "+_threshold +
         //    (_songPositionInBeat >= _previousBeat - _threshold && _songPositionInBeat <= _previousBeat + _threshold));
 
 
-
-        
-        return (_songPositionInBeat >= _previousBeat - _threshold && _songPositionInBeat <= _previousBeat + _threshold);
+        Debug.Log("Prev : " + _previousBeat);
+        Debug.Log("note : " + noteBeat);
+        Debug.Log("pos : " + _songPositionInBeat);
+        bool isCorrect = (_songPositionInBeat >= noteBeat - _threshold && _songPositionInBeat <= noteBeat + _threshold);
+        bool isGood = (_songPositionInBeat >= noteBeat - (_threshold/2f) && _songPositionInBeat <= noteBeat + (_threshold/2f));
+        bool isPerfect = (_songPositionInBeat >= noteBeat - _perfectThreshold && _songPositionInBeat <= noteBeat + _perfectThreshold);
+        Debug.Log("correct : " + isCorrect);
+        Debug.Log("Good : " + isGood);
+        Debug.Log("correct : " + isPerfect);
+        Debug.Log("__________________");
+        if (isCorrect)
+        {
+            _actualCombo++;
+        }
+        else
+        {
+            _actualCombo = 0;
+        }
+        if  (isGood)
+        {
+            _numberOfGood++;
+        }
+        if (isPerfect)
+        {
+            _numberOfPerfect++;
+        }
+        // return (_songPositionInBeat >= _previousBeat - _threshold && _songPositionInBeat <= _previousBeat + _threshold);
+        return isCorrect;
     }
 }

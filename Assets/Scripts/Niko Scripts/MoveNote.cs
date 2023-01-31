@@ -2,14 +2,14 @@ using UnityEngine;
 using DG.Tweening;
 public class MoveNote : MonoBehaviour
 {
-    public float BeatsOfNote;
+    public float BeatOfNote;
     private float timer = 0f;
     // Start is called before the first frame update
     void Start()
     {
-        BeatsOfNote = RythmManager.Instance._previousBeat + 2f;
+        BeatOfNote = RythmManager.Instance._previousBeat + 2f;
         transform.DOMove(RythmManager.Instance.RemoveNotePos.position, (RythmManager.Instance.BeatsShown * RythmManager.Instance._secondePerBeat) * 2);
-        Debug.Log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~Spawn : " + gameObject.transform.position);
+        //Debug.Log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~Spawn : " + gameObject.transform.position);
     }
     // Update is called once per frame
     void Update()
@@ -26,5 +26,9 @@ public class MoveNote : MonoBehaviour
         //Debug.Log("END Frame ######################");
         //transform.position = Vector3.Lerp(RythmManager.Instance.SpawnNotePos.position, RythmManager.Instance.RemoveNotePos.position, delta);
        // transform.position = Vector3.Lerp(RythmManager.Instance.SpawnNotePos.position, RythmManager.Instance.RemoveNotePos.position,timer);  
+    }
+    public void Miss()
+    {
+        Destroy(gameObject);
     }
 }

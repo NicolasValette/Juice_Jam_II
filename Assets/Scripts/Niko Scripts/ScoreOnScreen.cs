@@ -7,12 +7,14 @@ public class ScoreOnScreen : MonoBehaviour
 {
     [SerializeField]
     private TMP_Text _scoreText;
+    [SerializeField]
+    private TMP_Text _comboText;
 
     private int _goodNotes = 0;
     // Start is called before the first frame update
     void Start()
     {
-        _scoreText.text = $"Correct Notes : {_goodNotes}";
+        WriteScore();
     }
     private void OnEnable()
     {
@@ -26,11 +28,19 @@ public class ScoreOnScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _scoreText.text = $"Correct Notes : {_goodNotes}";
+        WriteScore();
     }
 
     public void HitNote()
     {
         _goodNotes++;
+    }
+
+    private void WriteScore()
+    {
+        _scoreText.text = $"Correct Notes : {_goodNotes}\n" +
+            $"Good notes : {RythmManager.Instance.Good}\n" +
+            $"PERFECT : {RythmManager.Instance.Perfect}";
+        _comboText.text = $"COMBO {RythmManager.Instance.Combo}";
     }
 }

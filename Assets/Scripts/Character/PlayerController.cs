@@ -17,10 +17,19 @@ public class PlayerController : CharacterController
     [SerializeField]
     GameObject WeaponSpawner;
 
+    [SerializeField]
+    GameObject WeaponSpawnedObject;
+
     // Start is called before the first frame update
     void Start()
     {
         actualSpeed = playerData._mediumMoveSpeed;
+    }
+
+    private void OnEnable()
+    {
+        // get weapon
+
     }
 
     // Update is called once per frame
@@ -57,4 +66,18 @@ public class PlayerController : CharacterController
         }
     }
     #endregion Movement
+
+    #region Weapon & fire
+    private void RemoveActualWeapon()
+    {
+        if (WeaponSpawnedObject != null)
+            Destroy(WeaponSpawnedObject);
+    }
+
+    void SpawnActualWeapon(int index)
+    {
+
+        WeaponSpawnedObject = (GameObject)Instantiate(WeaponSpawner);
+    }
+    #endregion Weapon & fire
 }

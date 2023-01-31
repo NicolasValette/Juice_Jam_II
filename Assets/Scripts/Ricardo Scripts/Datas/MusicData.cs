@@ -11,6 +11,10 @@ public class MusicData : ScriptableObject
     AudioClip audioClip;
     public AudioClip _audioClip { get { return audioClip; } }
 
+    [SerializeField]
+    int bPM = 0;
+    public int _bPM { get { return bPM; } }
+
  //   [SerializeField]
  //   AudioClip timeLine;
  //   public Timeline _timeLine { get { return timeLine; } }

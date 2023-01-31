@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Timeline;
 
 public class MusicData : ScriptableObject
 {
@@ -9,6 +10,10 @@ public class MusicData : ScriptableObject
     [SerializeField]
     AudioClip audioClip;
     public AudioClip _audioClip { get { return audioClip; } }
+
+ //   [SerializeField]
+ //   AudioClip timeLine;
+ //   public Timeline _timeLine { get { return timeLine; } }
 
     [Serializable]
     public class BeatData

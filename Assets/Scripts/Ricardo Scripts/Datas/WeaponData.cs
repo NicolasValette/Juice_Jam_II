@@ -7,6 +7,9 @@ public class WeaponData : ScriptableObject
 {
     #region Variables
 
+    [SerializeField]
+    bool autoFire;
+    public bool _autoFire { get { return autoFire; } }
 
     [SerializeField]
     Texture2D icon;
@@ -39,6 +42,10 @@ public class WeaponData : ScriptableObject
     [SerializeField]
     float dropChange = 0; // on 100, chance that an enemy drop it for the player
     public float _dropChange { get { return dropChange; } }
+
+    [SerializeField]
+    GameObject weaponPrefab;
+    public GameObject _weaponPrefab { get { return weaponPrefab; } }
 
     [SerializeField]
     GameObject projectilePrefab;

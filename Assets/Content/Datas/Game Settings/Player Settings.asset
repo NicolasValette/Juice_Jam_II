@@ -20,4 +20,5 @@ MonoBehaviour:
   turboMoveSpeed: 1.5
   weapons:
     maxWeaponsAmount: 2
-    weaponsList: []
+    weaponsList:
+    - {fileID: 11400000, guid: 9c0fcb0c908dc97499dd0d254b3d6940, type: 2}

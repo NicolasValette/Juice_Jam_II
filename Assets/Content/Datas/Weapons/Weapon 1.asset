@@ -9,13 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e01b70e63619324fae9481adbf86138, type: 3}
-  m_Name: (rename me) New Game Data
+  m_Script: {fileID: 11500000, guid: 8d6131f78942b5a408a9f15f57273945, type: 3}
+  m_Name: Weapon 1
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  uI: {fileID: 0}
-  gameContent:
-    levelsList: []
-    weaponsList: []
-    petsList: []
-    enemiesList: []
+  icon: {fileID: 0}
+  Name: Simple Canon
+  fireRate: 1
+  turboFireRate: 2
+  damage: 5
+  criticalChance: 5
+  criticalMultiplicator: 2
+  dropChange: 0
+  projectilePrefab: {fileID: 0}

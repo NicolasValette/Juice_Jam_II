@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d6131f78942b5a408a9f15f57273945, type: 3}
-  m_Name: (rename me) New Weapon Data
+  m_Script: {fileID: 11500000, guid: 6222a0daf42a66b418b4074934dc6cfc, type: 3}
+  m_Name: UI Settings
   m_EditorClassIdentifier: 

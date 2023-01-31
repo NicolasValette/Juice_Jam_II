@@ -158,7 +158,8 @@ MonoBehaviour:
   characterController: {fileID: 9047630}
   playerData: {fileID: 11400000, guid: 473a85d8f7cde6240aa1bc960d7c11b7, type: 2}
   actualSpeed: 1
-  WeaponSpawner: {fileID: 0}
+  WeaponSpawner: {fileID: 1285320048}
+  WeaponSpawnedObject: {fileID: 0}
 --- !u!65 &9047631
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -361,7 +362,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1285320048}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

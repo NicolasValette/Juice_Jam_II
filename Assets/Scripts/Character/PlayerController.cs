@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,8 +29,7 @@ public class PlayerController : CharacterController
 
     private void OnEnable()
     {
-        // get weapon
-
+        SpawnActualWeapon(0);        
     }
 
     // Update is called once per frame
@@ -46,19 +46,16 @@ public class PlayerController : CharacterController
     {
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            transform.Translate(Vector3.left * (Time.deltaTime * actualSpeed));
-           
+            transform.Translate(Vector3.back * (Time.deltaTime * actualSpeed));
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
-            transform.Translate(Vector3.right * (Time.deltaTime * actualSpeed));
-            
+            transform.Translate(Vector3.forward * (Time.deltaTime * actualSpeed));
         }
 
         if (Input.GetKey(KeyCode.UpArrow))
         {
             transform.Translate(Vector3.up * (Time.deltaTime * actualSpeed));
-
         }
         else if (Input.GetKey(KeyCode.DownArrow))
         {
@@ -76,8 +73,9 @@ public class PlayerController : CharacterController
 
     void SpawnActualWeapon(int index)
     {
-
-        WeaponSpawnedObject = (GameObject)Instantiate(WeaponSpawner);
+        WeaponSpawnedObject = (GameObject)Instantiate(playerData._weapons._weaponsList[index]._weaponPrefab, 
+            WeaponSpawner.transform.position, WeaponSpawner.transform.rotation, WeaponSpawner.transform);
     }
+    
     #endregion Weapon & fire
 }

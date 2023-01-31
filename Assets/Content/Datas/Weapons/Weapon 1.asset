@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d6131f78942b5a408a9f15f57273945, type: 3}
   m_Name: Weapon 1
   m_EditorClassIdentifier: 
+  autoFire: 1
   icon: {fileID: 0}
   Name: Simple Canon
   fireRate: 1
@@ -20,4 +21,5 @@ MonoBehaviour:
   criticalChance: 5
   criticalMultiplicator: 2
   dropChange: 0
-  projectilePrefab: {fileID: 0}
+  weaponPrefab: {fileID: 8057495126163945253, guid: adb9b291348d76b4ab406a5721c1aa6b, type: 3}
+  projectilePrefab: {fileID: 7784902942129923962, guid: 68d5f3f808d18b8468a6052dcb7c4da8, type: 3}

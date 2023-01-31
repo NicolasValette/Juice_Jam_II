@@ -6,23 +6,28 @@ public class WeaponBehaviour : MonoBehaviour
 {
     #region Variables
     [SerializeField]
-    List<GameObject> ProjectileSpawnersList= new List<GameObject>();
+    List<GameObject> ProjectileSpawnersList = new List<GameObject>();
 
     [SerializeField]
     WeaponData weaponData;
+
+    [SerializeField]
+    bool Locked = true;
 
     #endregion Variables
 
     // Start is called before the first frame update
     void Start()
     {
-        if (weaponData._autoFire)
-            InvokeRepeating("fireProjectile", 0, weaponData._fireRate);
+        
     }
 
     private void OnEnable()
     {
-        
+        Locked = false;
+
+        if (weaponData._autoFire)
+            InvokeRepeating("fireProjectile", 0, weaponData._fireRate);
     }
 
     // Update is called once per frame
@@ -33,7 +38,17 @@ public class WeaponBehaviour : MonoBehaviour
 
     public void Fire()
     {
-       
+        if (Locked == false)
+        {
+            Locked = true;
+            fireProjectile();
+            Invoke("Unlock", weaponData._fireRate);
+        }
+    }
+
+    void Unlock()
+    {
+        Locked = false;
     }
 
     private void fireProjectile()
@@ -41,8 +56,7 @@ public class WeaponBehaviour : MonoBehaviour
         for (int i = 0; i < ProjectileSpawnersList.Count; i++)
         {
             GameObject projectile = (GameObject)Instantiate(weaponData._projectilePrefab, 
-                ProjectileSpawnersList[i].transform.position, ProjectileSpawnersList[i].transform.rotation, 
-                ProjectileSpawnersList[i].transform);            
+                ProjectileSpawnersList[i].transform.position, ProjectileSpawnersList[i].transform.rotation);            
         }
     }
 }

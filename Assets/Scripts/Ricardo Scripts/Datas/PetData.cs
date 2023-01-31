@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PetData : ScriptableObject
+public class PetData : CharacterData
 {
     #region Variables
 

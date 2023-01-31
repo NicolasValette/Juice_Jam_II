@@ -6,8 +6,6 @@ public class RythmManager : MonoBehaviour
 {
 
     [SerializeField]
-    private float _songBPM;                 //Beat per minute of the song.
-    [SerializeField]
     private MusicData _music;
     [SerializeField]
     private float _threshold;
@@ -81,7 +79,7 @@ public class RythmManager : MonoBehaviour
     {
         musicSource = GetComponent<AudioSource>();
         musicSource.clip = _music._audioClip;
-        _secondePerBeat = 60f / _songBPM;
+        _secondePerBeat = 60f / _music._bPM;
         _songDspTime = (float)AudioSettings.dspTime;
         _songTime = musicSource.clip.length;
         _songTimeInBeats = _songTime * _secondePerBeat;
@@ -113,6 +111,7 @@ public class RythmManager : MonoBehaviour
         if (isCorrect)
         {
             _actualCombo++;
+            actualNote.GetComponent<MoveNote>().Hit();
         }
         else
         {
@@ -126,6 +125,7 @@ public class RythmManager : MonoBehaviour
         {
             _numberOfPerfect++;
         }
+        
         // return (_songPositionInBeat >= _previousBeat - _threshold && _songPositionInBeat <= _previousBeat + _threshold);
         return isCorrect;
     }

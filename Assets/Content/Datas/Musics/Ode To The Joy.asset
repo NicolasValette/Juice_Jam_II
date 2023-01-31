@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Ode To The Joy
   m_EditorClassIdentifier: 
   audioClip: {fileID: 8300000, guid: f5f5dc00c3da5044aba7744fcdf9bfe1, type: 3}
-  bPM: 0
+  bPM: 83
   timeLine: {fileID: 0}
   beatsList:
   - timeCode: 0

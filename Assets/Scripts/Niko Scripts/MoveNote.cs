@@ -4,9 +4,11 @@ public class MoveNote : MonoBehaviour
 {
     public float BeatOfNote;
     private float timer = 0f;
+    private ParticleSystem ps;
     // Start is called before the first frame update
     void Start()
     {
+        ps = GetComponent<ParticleSystem>();
         BeatOfNote = RythmManager.Instance._previousBeat + 2f;
         transform.DOMove(RythmManager.Instance.RemoveNotePos.position, (RythmManager.Instance.BeatsShown * RythmManager.Instance._secondePerBeat) * 2);
         //Debug.Log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~Spawn : " + gameObject.transform.position);
@@ -30,5 +32,11 @@ public class MoveNote : MonoBehaviour
     public void Miss()
     {
         Destroy(gameObject);
+    }
+    public void Hit()
+    {
+        ps.Play();
+        Destroy(gameObject, ps.main.duration);
+        gameObject.GetComponent<Renderer>().enabled = false;
     }
 }

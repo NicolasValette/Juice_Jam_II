@@ -117,7 +117,7 @@ MonoBehaviour:
   explodeByItself: 0
   damages: 1
   maxDistance: 20
-  moveSpeed: 1
+  moveSpeed: 10
   bounceForce: 20
   fXSpawnerFireObjPrefab: {fileID: 0}
   fXSpawnerImpactObjPrefab: {fileID: 0}

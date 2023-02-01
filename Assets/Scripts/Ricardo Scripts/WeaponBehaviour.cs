@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,14 +6,22 @@ using UnityEngine;
 public class WeaponBehaviour : MonoBehaviour
 {
     #region Variables
-    [SerializeField]
-    List<GameObject> ProjectileSpawnersList = new List<GameObject>();
 
     [SerializeField]
     WeaponData weaponData;
 
     [SerializeField]
     bool Locked = true;
+
+    [Serializable]
+    public class ProjectileSpawnerData
+    {
+        public GameObject BulletSpawner;
+        public GameObject FireFXDirection;
+    }
+
+    [SerializeField]
+    protected List<ProjectileSpawnerData> ProjectileSpawnersList = new List<ProjectileSpawnerData>();
 
     #endregion Variables
 
@@ -56,7 +65,7 @@ public class WeaponBehaviour : MonoBehaviour
         for (int i = 0; i < ProjectileSpawnersList.Count; i++)
         {
             GameObject projectile = (GameObject)Instantiate(weaponData._projectilePrefab, 
-                ProjectileSpawnersList[i].transform.position, ProjectileSpawnersList[i].transform.rotation);            
+                ProjectileSpawnersList[i].BulletSpawner.transform.position, ProjectileSpawnersList[i].BulletSpawner.transform.rotation);            
         }
     }
 }

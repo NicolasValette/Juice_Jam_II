@@ -42,8 +42,9 @@ public class ScoreOnScreen : MonoBehaviour
     {
         _scoreText.text = $"Correct Notes : {_goodNotes}\n" +
             $"Good notes : {RythmManager.Instance.Good}\n" +
-            $"PERFECT : {RythmManager.Instance.Perfect}";
+            $"PERFECT : {RythmManager.Instance.Perfect}\n" +
+            $"Golds : {GameHandler.Instance.goldAmount}";
         _comboText.text = $"COMBO {RythmManager.Instance.Combo}";
-        _songDurText.text = $"Song duration {(int)RythmManager.Instance._songPositionInSeconds} second";
+        _songDurText.text = $"Song duration {(int)(RythmManager.Instance._songTime - RythmManager.Instance._songPositionInSeconds)} second";
     }
 }

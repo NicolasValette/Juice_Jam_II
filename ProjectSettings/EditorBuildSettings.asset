@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WIP Scenes/NikoScene/WIP Scene Niko.unity
     guid: 39a738e0c511c1d479c08014ff43fcc7
+  - enabled: 1
+    path: Assets/Scenes/WIP Scenes/NikoScene/Win Scene.unity
+    guid: 7ac1a874d3f5856498f7689c277dd8e9
   m_configObjects: {}

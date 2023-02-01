@@ -5997,12 +5997,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90efb6669fd7bc4bbd5818663c75305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyData: {fileID: 0}
   IsPlayer: 0
+  playerController: {fileID: 0}
+  MaxLifePoint: 1
+  LifePoint: 1
+  HowDestroy: 0
+  DestroyedFXPositionObj: {fileID: 0}
+  DestroyedSoundPlayer: {fileID: 0}
   characterController: {fileID: 1155599433}
   playerData: {fileID: 11400000, guid: 473a85d8f7cde6240aa1bc960d7c11b7, type: 2}
   actualSpeed: 5
   weaponSpawner: {fileID: 594717995}
   weaponSpawnedObject: {fileID: 0}
+  gamStarted: 0
 --- !u!1 &1161790180
 GameObject:
   m_ObjectHideFlags: 0
@@ -6755,6 +6763,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3617444274039170336, guid: cc6045c4778455646a68b169fbba1fc4, type: 3}
+      propertyPath: _music
+      value: 
+      objectReference: {fileID: 11400000, guid: 7f9c5943a807945418d5f5c68e468979, type: 2}
+    - target: {fileID: 3617444274039170336, guid: cc6045c4778455646a68b169fbba1fc4, type: 3}
+      propertyPath: _notePrefab
+      value: 
+      objectReference: {fileID: 100020, guid: f7db8bd269685e046b9c40bf6a5ed28b, type: 3}
+    - target: {fileID: 3617444274039170336, guid: cc6045c4778455646a68b169fbba1fc4, type: 3}
       propertyPath: SpawnNotePos
       value: 
       objectReference: {fileID: 259200263}
@@ -6813,6 +6829,10 @@ PrefabInstance:
     - target: {fileID: 3617444274039170342, guid: cc6045c4778455646a68b169fbba1fc4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3617444274039170343, guid: cc6045c4778455646a68b169fbba1fc4, type: 3}
+      propertyPath: m_audioClip
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc6045c4778455646a68b169fbba1fc4, type: 3}

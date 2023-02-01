@@ -34,7 +34,7 @@ public class EnnemySpawnManager : MonoBehaviour
         for (int i=0; i<_spawnList.Count; i++)
         {
             GameObject ennemy = Instantiate(_ennemyPrefab, _spawnList[i].position, _spawnList[i].rotation);
-            ennemy.GetComponent<EnnemyTemp>().PlayerPosition = _playerPos;
+            ennemy.GetComponent<EnnemyController>().PlayerPosition = _playerPos;
         }
     }
    

@@ -31,6 +31,37 @@ Transform:
   m_Father: {fileID: 273188343072202707}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1 &1724193025386264602
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 236357381772396141}
+  m_Layer: 6
+  m_Name: FireFXDirection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &236357381772396141
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724193025386264602}
+  m_LocalRotation: {x: 0.70710695, y: 0.000000059604638, z: -0, w: 0.70710665}
+  m_LocalPosition: {x: 0, y: -0, z: 1.48}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 273188343072202707}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &8057495126163945253
 GameObject:
   m_ObjectHideFlags: 0
@@ -61,6 +92,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3180112070954709490}
+  - {fileID: 236357381772396141}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -76,7 +108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e9d1ee6326e49447a4fe2686ebfdac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProjectileSpawnersList:
-  - {fileID: 806735849320446281}
   weaponData: {fileID: 11400000, guid: 9c0fcb0c908dc97499dd0d254b3d6940, type: 2}
   Locked: 1
+  ProjectileSpawnersList:
+  - BulletSpawner: {fileID: 806735849320446281}
+    FireFXDirection: {fileID: 1724193025386264602}

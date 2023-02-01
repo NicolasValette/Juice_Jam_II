@@ -39,6 +39,9 @@ public class ProjectileController : MonoBehaviour
     [SerializeField]
     private GameObject fXSpawnerFireObjPrefab;
 
+  //  [SerializeField]
+ //   private GameObject fXSpawnerProjectileObjPrefab;
+
     [SerializeField]
     private GameObject fXSpawnerImpactObjPrefab;
 

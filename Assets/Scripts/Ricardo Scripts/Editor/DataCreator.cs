@@ -65,6 +65,18 @@ public class DataCreator : MonoBehaviour
         string path = "Assets/Content/Datas/Pets/" + newData.name + ".asset";
         AssetDatabase.CreateAsset(newData, path);
     }
+
+    [MenuItem("Window/My Game/Data Creator/Create Pickup Data")]
+    public static void CreatePickupData()
+    {
+        PickupData newData = new PickupData();
+        newData.name = "(rename me) New Pickup Data";
+
+        Selection.activeObject = newData;
+
+        string path = "Assets/Content/Datas/Pickups/" + newData.name + ".asset";
+        AssetDatabase.CreateAsset(newData, path);
+    }
     #endregion Game Content
 
     #region Game Settings

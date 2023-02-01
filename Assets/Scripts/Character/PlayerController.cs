@@ -16,10 +16,10 @@ public class PlayerController : CharacterController
     float actualSpeed = 1.0f;
 
     [SerializeField]
-    GameObject WeaponSpawner;
+    GameObject weaponSpawner;
 
     [SerializeField]
-    GameObject WeaponSpawnedObject;
+    GameObject weaponSpawnedObject;
 
     // Start is called before the first frame update
     void Start()
@@ -67,14 +67,14 @@ public class PlayerController : CharacterController
     #region Weapon & fire
     private void RemoveActualWeapon()
     {
-        if (WeaponSpawnedObject != null)
-            Destroy(WeaponSpawnedObject);
+        if (weaponSpawnedObject != null)
+            Destroy(weaponSpawnedObject);
     }
 
     void SpawnActualWeapon(int index)
     {
-        WeaponSpawnedObject = (GameObject)Instantiate(playerData._weapons._weaponsList[index]._weaponPrefab, 
-            WeaponSpawner.transform.position, WeaponSpawner.transform.rotation, WeaponSpawner.transform);
+        weaponSpawnedObject = (GameObject)Instantiate(playerData._weapons._weaponsList[index]._weaponPrefab, 
+            weaponSpawner.transform.position, weaponSpawner.transform.rotation, weaponSpawner.transform);
     }
     
     #endregion Weapon & fire

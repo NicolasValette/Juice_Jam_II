@@ -4,15 +4,11 @@ using UnityEngine;
 
 public abstract class CharacterController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    #region Variables
+    [SerializeField]
+    bool IsPlayer = false;
+    public bool _IsPlayer { get { return IsPlayer; } }
+    #endregion Variables
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

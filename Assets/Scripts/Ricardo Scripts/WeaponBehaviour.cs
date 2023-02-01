@@ -8,6 +8,9 @@ public class WeaponBehaviour : MonoBehaviour
     #region Variables
 
     [SerializeField]
+    CharacterController characterController;
+
+    [SerializeField]
     WeaponData weaponData;
 
     [SerializeField]
@@ -45,8 +48,10 @@ public class WeaponBehaviour : MonoBehaviour
 
     }
 
-    public void Fire()
+    public void Fire(CharacterController _characterController)
     {
+        characterController = _characterController;
+
         if (Locked == false)
         {
             Locked = true;
@@ -64,8 +69,28 @@ public class WeaponBehaviour : MonoBehaviour
     {
         for (int i = 0; i < ProjectileSpawnersList.Count; i++)
         {
-            GameObject projectile = (GameObject)Instantiate(weaponData._projectilePrefab, 
-                ProjectileSpawnersList[i].BulletSpawner.transform.position, ProjectileSpawnersList[i].BulletSpawner.transform.rotation);            
+            InstantiateBulletPrefab(ProjectileSpawnersList[i]);
+        }
+    }
+
+    protected void InstantiateBulletPrefab(ProjectileSpawnerData bulletSpawner) // create the bullet
+    {
+        if (bulletSpawner != null)
+        {
+            // Create a bullet and place it on the correct trajectory
+            GameObject bullet = Instantiate<GameObject>(weaponData._projectilePrefab, bulletSpawner.BulletSpawner.transform.position, bulletSpawner.BulletSpawner.transform.rotation);
+            ProjectileController bulletController = bullet.transform.GetComponent<ProjectileController>();
+            bulletController.emiter = bulletSpawner.BulletSpawner;
+            bulletController.dirObj = bulletSpawner.FireFXDirection;
+
+            bullet.gameObject.SetActive(true);
+
+            // display ammo count on the UI
+            if (characterController._IsPlayer)
+            {
+                bulletController.FiredBy = ProjectileController.FiredByEnum.Player;
+            }
+            else bulletController.FiredBy = ProjectileController.FiredByEnum.Enemy;
         }
     }
 }

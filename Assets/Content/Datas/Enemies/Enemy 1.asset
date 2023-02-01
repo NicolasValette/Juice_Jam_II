@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c376b17f3f9e2be44a87f4401c2e2538, type: 3}
   m_Name: Enemy 1
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 6192883215628668110, guid: 8d8cbdce8935f9d4fb45fb9f09a50a27, type: 3}
   maxHitPoints: 20
-  lowMoveSpeed: 0.5
-  mediumMoveSpeed: 1
-  maxMoveSpeed: 1.5
+  lowMoveSpeed: 2.5
+  mediumMoveSpeed: 5
+  maxMoveSpeed: 7.5
   turboMoveSpeed: 1.5
   weapons:
     maxWeaponsAmount: 2

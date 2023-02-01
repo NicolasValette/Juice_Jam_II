@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/WIP Scenes/NikoScene/WIP Menu.unity
+    guid: c0fe861ec3bf8374ebb195d80b464d31
+  - enabled: 1
+    path: Assets/Scenes/WIP Scenes/NikoScene/WIP Scene Niko.unity
+    guid: 39a738e0c511c1d479c08014ff43fcc7
   m_configObjects: {}

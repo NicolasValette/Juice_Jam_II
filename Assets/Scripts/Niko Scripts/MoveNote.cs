@@ -4,12 +4,14 @@ public class MoveNote : MonoBehaviour
 {
     public float BeatOfNote;
     private float timer = 0f;
+    private Animator anim;
     // Start is called before the first frame update
     void Start()
     {
-        
+        anim = GetComponent<Animator>();
         BeatOfNote = RythmManager.Instance._previousBeat + 2f;
         transform.DOMove(RythmManager.Instance.RemoveNotePos.position, (RythmManager.Instance.BeatsShown * RythmManager.Instance._secondePerBeat) * 2);
+        anim.SetFloat("Speed", 1f);
         //Debug.Log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~Spawn : " + gameObject.transform.position);
     }
     // Update is called once per frame
@@ -39,10 +41,12 @@ public class MoveNote : MonoBehaviour
     public void Hit()
     {
         Debug.Log("BOUM");
-       
-        GetComponent<ParticleSystem>().Play();
-        gameObject.GetComponent<Renderer>().enabled = false;
-        Destroy(gameObject, GetComponent<ParticleSystem>().main.duration);
+        ParticleSystem ps = GetComponent<ParticleSystem>();
+        ps.Play();
+        //gameObject.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
         
+        anim.SetBool("Dead", true);
+        Destroy(gameObject, ps.main.duration);
+
     }
 }

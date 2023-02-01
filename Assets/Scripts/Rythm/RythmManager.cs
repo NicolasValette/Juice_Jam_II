@@ -138,4 +138,9 @@ public class RythmManager : MonoBehaviour
         // return (_songPositionInBeat >= _previousBeat - _threshold && _songPositionInBeat <= _previousBeat + _threshold);
         return isCorrect;
     }
+    public void Stop()
+    {
+        musicSource.Stop();
+    }
+    
 }

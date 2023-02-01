@@ -12,8 +12,8 @@ public class MusicData : ScriptableObject
     public AudioClip _audioClip { get { return audioClip; } }
 
     [SerializeField]
-    int bPM = 0;
-    public int _bPM { get { return bPM; } }
+    float bPM = 0f;
+    public float _bPM { get { return bPM; } }
 
     [SerializeField]
     TimelineAsset timeLine;

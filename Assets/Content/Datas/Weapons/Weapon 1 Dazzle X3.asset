@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   autoFire: 1
   icon: {fileID: 0}
-  Name: Simple Canon
+  Name: Triple Canon
   fireRate: 0.5
   turboFireRate: 2
   damage: 5

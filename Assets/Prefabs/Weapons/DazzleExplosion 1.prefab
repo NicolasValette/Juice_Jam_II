@@ -14535,8 +14535,10 @@ GameObject:
   - component: {fileID: 19835740}
   - component: {fileID: 19986330}
   - component: {fileID: 8236496}
+  - component: {fileID: -5196788997839989000}
+  - component: {fileID: 6120841144782495408}
   m_Layer: 0
-  m_Name: DazzleExplosion
+  m_Name: DazzleExplosion 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19452,3 +19454,29 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &-5196788997839989000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd12914acc641c247b31d17122153144, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Delay: 1.5
+--- !u!114 &6120841144782495408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd12914acc641c247b31d17122153144, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Delay: 1

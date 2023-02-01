@@ -15,7 +15,7 @@ MonoBehaviour:
   prefab: {fileID: 0}
   maxHitPoints: 20
   lowMoveSpeed: 0.5
-  mediumMoveSpeed: 1
+  mediumMoveSpeed: 5
   maxMoveSpeed: 1.5
   turboMoveSpeed: 1.5
   weapons:

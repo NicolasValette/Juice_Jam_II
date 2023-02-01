@@ -46,13 +46,16 @@ public class RythmManager : MonoBehaviour
 
     public float _previousBeat;
 
+    
     public static RythmManager Instance;
     private Queue<GameObject> _noteQueue;
+    private int _eventInBeatListIndex = 0;
     // Start is called before the first frame update
     void Start()
     {
         Instance = this;
         InitAttributes();
+        
     }
 
     // Update is called once per frame
@@ -73,6 +76,12 @@ public class RythmManager : MonoBehaviour
             _noteQueue.Enqueue(note);
             EventManager.TriggerEvent(EventManager.Events.OnBeatChange);
         }
+        if (_eventInBeatListIndex < _music._beatsList.Count && _music._beatsList[_eventInBeatListIndex]._timeCode <= _songPositionInSeconds)
+        {
+            Debug.Log("beatlist++");
+            EventManager.TriggerEvent(_music._beatsList[_eventInBeatListIndex]._eventAction);
+            _eventInBeatListIndex++;
+        }    
     }
 
     private void InitAttributes()

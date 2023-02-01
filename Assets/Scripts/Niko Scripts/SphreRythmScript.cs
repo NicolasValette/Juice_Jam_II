@@ -10,7 +10,7 @@ public class SphreRythmScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        transform.Rotate(transform.up, 90f);
         _meshRenderer = GetComponent<MeshRenderer>();
     }
     private void OnEnable()

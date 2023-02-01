@@ -9,6 +9,8 @@ public class ScoreOnScreen : MonoBehaviour
     private TMP_Text _scoreText;
     [SerializeField]
     private TMP_Text _comboText;
+    [SerializeField]
+    private TMP_Text _songDurText;
 
     private int _goodNotes = 0;
     // Start is called before the first frame update
@@ -42,5 +44,6 @@ public class ScoreOnScreen : MonoBehaviour
             $"Good notes : {RythmManager.Instance.Good}\n" +
             $"PERFECT : {RythmManager.Instance.Perfect}";
         _comboText.text = $"COMBO {RythmManager.Instance.Combo}";
+        _songDurText.text = $"Song duration {(int)RythmManager.Instance._songPositionInSeconds} second";
     }
 }

@@ -107,16 +107,16 @@ public class RythmManager : MonoBehaviour
         //    (_songPositionInBeat >= _previousBeat - _threshold && _songPositionInBeat <= _previousBeat + _threshold));
 
 
-        Debug.Log("Prev : " + _previousBeat);
-        Debug.Log("note : " + noteBeat);
-        Debug.Log("pos : " + _songPositionInBeat);
+        //Debug.Log("Prev : " + _previousBeat);
+        //Debug.Log("note : " + noteBeat);
+        //Debug.Log("pos : " + _songPositionInBeat);
         bool isCorrect = (_songPositionInBeat >= noteBeat - _threshold && _songPositionInBeat <= noteBeat + _threshold);
         bool isGood = (_songPositionInBeat >= noteBeat - (_threshold/2f) && _songPositionInBeat <= noteBeat + (_threshold/2f));
         bool isPerfect = (_songPositionInBeat >= noteBeat - _perfectThreshold && _songPositionInBeat <= noteBeat + _perfectThreshold);
-        Debug.Log("correct : " + isCorrect);
-        Debug.Log("Good : " + isGood);
-        Debug.Log("correct : " + isPerfect);
-        Debug.Log("__________________");
+        //Debug.Log("correct : " + isCorrect);
+        //Debug.Log("Good : " + isGood);
+        //Debug.Log("correct : " + isPerfect);
+        //Debug.Log("__________________");
         if (isCorrect)
         {
             _actualCombo++;

@@ -18,10 +18,10 @@ public abstract class CharacterController : MonoBehaviour
     PlayerController playerController;
 
     [SerializeField]
-    int MaxLifePoint = 1;
+    protected int MaxLifePoint = 1;
 
     [SerializeField]
-    int LifePoint = 1;
+    protected int LifePoint = 1;
     enum HowDestroyEnum { DestroyObject, DisableComponent }
     [SerializeField]
     private HowDestroyEnum HowDestroy = new HowDestroyEnum();
@@ -42,17 +42,17 @@ public abstract class CharacterController : MonoBehaviour
     #region Damages & death
     void OnCollisionEnter(Collision collision) // object is collided by anther object, verify if the other is an ennemy bullet
     {
-        Debug.Log("OnCollisionEnter");
         ProjectileController bulletController = collision.transform.GetComponent<ProjectileController>();
 
-        if(bulletController != null)
+        if(bulletController != null) Debug.Log("OnCollisionEnter bulletController");
+
 
         if (LifePoint > 0)
         {
             // verify if the collision is an entering ennemy bullet
             if (bulletController != null)
             {
-                Debug.Log("OnCollisionEnter bulletController");
+                Debug.Log("LifePoint > 0 OnCollisionEnter bulletController");
                 // Receive damages from the bullet                  
                 ReceiveDamages(bulletController.GetDamages());
             }            

@@ -13,8 +13,10 @@ public class EnnemyController : CharacterController
 
     private void OnEnable()
     {
+        LifePoint = _enemyData._maxHitPoints;
+
         EventManager.StartListening(EventManager.Events.OnNoteHit, Explode);
-    //    Invoke("", enemyData.);
+        Invoke("Explode", _enemyData._stayDuration);
     }
     private void OnDisable()
     {
@@ -23,7 +25,8 @@ public class EnnemyController : CharacterController
 
     void Update()
     {
-        
+        if (_enemyData._moveType == EnemyData.MoveTypeEnum.RushOnPlayer)
+            AimAndRushPlayer();
     }
 
     void AimAndRushPlayer()

@@ -21,3 +21,7 @@ MonoBehaviour:
   weapons:
     maxWeaponsAmount: 2
     weaponsList: []
+  fXSpawnerDestroyedObjPrefab: {fileID: 0}
+  destroyedSound: {fileID: 0}
+  moveType: 0
+  stayDuration: 10

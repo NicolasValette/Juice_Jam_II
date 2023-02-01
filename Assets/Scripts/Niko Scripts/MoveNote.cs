@@ -4,11 +4,10 @@ public class MoveNote : MonoBehaviour
 {
     public float BeatOfNote;
     private float timer = 0f;
-    private ParticleSystem ps;
     // Start is called before the first frame update
     void Start()
     {
-        ps = GetComponent<ParticleSystem>();
+        
         BeatOfNote = RythmManager.Instance._previousBeat + 2f;
         transform.DOMove(RythmManager.Instance.RemoveNotePos.position, (RythmManager.Instance.BeatsShown * RythmManager.Instance._secondePerBeat) * 2);
         //Debug.Log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~Spawn : " + gameObject.transform.position);
@@ -27,7 +26,11 @@ public class MoveNote : MonoBehaviour
         //Debug.Log("Timer : " + timer);
         //Debug.Log("END Frame ######################");
         //transform.position = Vector3.Lerp(RythmManager.Instance.SpawnNotePos.position, RythmManager.Instance.RemoveNotePos.position, delta);
-       // transform.position = Vector3.Lerp(RythmManager.Instance.SpawnNotePos.position, RythmManager.Instance.RemoveNotePos.position,timer);  
+       // transform.position = Vector3.Lerp(RythmManager.Instance.SpawnNotePos.position, RythmManager.Instance.RemoveNotePos.position,timer);
+       if (Input.GetKeyDown(KeyCode.S))
+        {
+            GetComponent<ParticleSystem>().Play();
+        }
     }
     public void Miss()
     {
@@ -35,8 +38,11 @@ public class MoveNote : MonoBehaviour
     }
     public void Hit()
     {
-        ps.Play();
-        Destroy(gameObject, ps.main.duration);
+        Debug.Log("BOUM");
+       
+        GetComponent<ParticleSystem>().Play();
         gameObject.GetComponent<Renderer>().enabled = false;
+        Destroy(gameObject, GetComponent<ParticleSystem>().main.duration);
+        
     }
 }

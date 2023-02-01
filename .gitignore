@@ -8,6 +8,7 @@
 /[Bb]uild/
 /[Bb]uilds/
 /[Ll]ogs/
+/[Uu]ser[Ss]ettings/
 /[Mm]emoryCaptures/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
@@ -58,3 +59,4 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+Assets/3rd Party Assets/MagicArsenal/Upgrades/Magic Arsenal URP Upgrade (Legacy Shaders).unitypackage.meta

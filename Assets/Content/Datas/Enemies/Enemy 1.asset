@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c376b17f3f9e2be44a87f4401c2e2538, type: 3}
+  m_Name: Enemy 1
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 6192883215628668110, guid: 8d8cbdce8935f9d4fb45fb9f09a50a27, type: 3}
+  maxHitPoints: 20
+  lowMoveSpeed: 2.5
+  mediumMoveSpeed: 5
+  maxMoveSpeed: 7.5
+  turboMoveSpeed: 1.5
+  weapons:
+    maxWeaponsAmount: 2
+    weaponsList: []
+  fXSpawnerDestroyedObjPrefab: {fileID: 0}
+  destroyedSound: {fileID: 0}
+  moveType: 0
+  stayDuration: 10

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d6131f78942b5a408a9f15f57273945, type: 3}
-  m_Name: Weapon 1
+  m_Name: Weapon 1 Dazzle
   m_EditorClassIdentifier: 
   autoFire: 1
   icon: {fileID: 0}

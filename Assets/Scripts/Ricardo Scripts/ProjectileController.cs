@@ -94,6 +94,7 @@ public class ProjectileController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision) // when the bullet collides with an object
     {
+        Debug.Log("OnCollisionEnter");
         if (collision.transform.tag != "NoBulletCollision")
         {
             _collision = collision;
@@ -157,11 +158,14 @@ public class ProjectileController : MonoBehaviour
             // Instantiate the particle system at the impact position
             GameObject spawner = Instantiate<GameObject>(fXSpawnerImpactObjPrefab, _position, new Quaternion(0, 0, 0, 0));
 
-            // assign the origin position of the weapon fire
-            spawner.GetComponent<FXSpawner>().SourceObjPosition = startPosition;
+            if (spawner != null && spawner.GetComponent<FXSpawner>() != null)
+            {
+                // assign the origin position of the weapon fire
+                spawner.GetComponent<FXSpawner>().SourceObjPosition = startPosition;
 
-            // launch the FXs system
-            spawner.GetComponent<FXSpawner>().InitSystem(true);
+                // launch the FXs system
+                spawner.GetComponent<FXSpawner>().InitSystem(true);
+            }
         }
     }
     #endregion FXs

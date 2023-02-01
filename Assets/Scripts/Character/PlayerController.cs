@@ -21,6 +21,9 @@ public class PlayerController : CharacterController
     [SerializeField]
     GameObject weaponSpawnedObject;
 
+    [SerializeField]
+    bool gamStarted = false;
+
     // Start is called before the first frame update
     void Start()
     {

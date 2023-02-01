@@ -49,6 +49,10 @@ public class LevelData : ScriptableObject
         [SerializeField]
         List<EnemyData> difficultEnemiesList;
         public List<EnemyData> _difficultEnemiesList { get { return difficultEnemiesList; } }
+
+        [SerializeField]
+        GameObject notePrefab;
+        public GameObject _notePrefab { get { return notePrefab; } }
     }
       
     [Serializable]

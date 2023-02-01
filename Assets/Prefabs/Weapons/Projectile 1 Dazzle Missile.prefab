@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6175605873323596125}
   - component: {fileID: 5787889651642072191}
   - component: {fileID: 706688820205455337}
-  - component: {fileID: 1888854897808843704}
+  - component: {fileID: 8608233989100081861}
   - component: {fileID: 8880156694937340551}
   m_Layer: 0
   m_Name: Projectile 1 Dazzle Missile
@@ -86,8 +86,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &1888854897808843704
-CapsuleCollider:
+--- !u!135 &8608233989100081861
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -96,9 +96,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
+  serializedVersion: 2
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8880156694937340551
 MonoBehaviour:
@@ -121,8 +120,7 @@ MonoBehaviour:
   moveSpeed: 10
   bounceForce: 20
   fXSpawnerFireObjPrefab: {fileID: 160798, guid: 1a656d4b94d60c747a87c3f0a6dcb08d, type: 3}
-  fXSpawnerProjectileObjPrefab: {fileID: 177138, guid: ed1e5a2a5bed8a445b628055dc9349d8, type: 3}
-  fXSpawnerImpactObjPrefab: {fileID: 191018, guid: 592694f61583d324b94e3110ba605da5, type: 3}
+  fXSpawnerImpactObjPrefab: {fileID: 191018, guid: 47f75412bdff2a64f949fbb54a0f57d6, type: 3}
   emiter: {fileID: 0}
   dirObj: {fileID: 0}
 --- !u!1001 &5392817675206745644

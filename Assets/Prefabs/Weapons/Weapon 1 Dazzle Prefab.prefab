@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 273188343072202707}
   - component: {fileID: 2441063394591499647}
   m_Layer: 6
-  m_Name: Weapon 1 Prefab
+  m_Name: Weapon 1 Dazzle Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

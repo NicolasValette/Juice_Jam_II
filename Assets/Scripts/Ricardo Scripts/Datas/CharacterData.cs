@@ -44,6 +44,14 @@ public class CharacterData : ScriptableObject
     [SerializeField]
     protected WeaponsData weapons = new WeaponsData();
     public WeaponsData _weapons { get { return weapons; } }
+
+    [SerializeField]
+    protected GameObject fXSpawnerDestroyedObjPrefab;
+    public GameObject _fXSpawnerDestroyedObjPrefab { get { return fXSpawnerDestroyedObjPrefab; } }
+    
+    [SerializeField]
+    private AudioClip destroyedSound;
+    public AudioClip _destroyedSound { get { return destroyedSound; } }
     #endregion Variables
 
 

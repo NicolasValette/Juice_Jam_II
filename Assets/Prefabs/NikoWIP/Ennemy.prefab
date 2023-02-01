@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -7690607106287641317}
   - component: {fileID: -3729440599717132919}
   - component: {fileID: 8408913924846909755}
+  - component: {fileID: 2890701792269747487}
   m_Layer: 0
   m_Name: Ennemy
   m_TagString: Untagged
@@ -127,7 +128,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -4968,3 +4969,23 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &2890701792269747487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6192883215628668110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e59d7e60191a24c9c80bad46b755b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyData: {fileID: 11400000, guid: efa4cab4b0227c1478375fe538ffe9d1, type: 2}
+  IsPlayer: 0
+  playerController: {fileID: 0}
+  MaxLifePoint: 1
+  LifePoint: 1
+  HowDestroy: 0
+  DestroyedFXPositionObj: {fileID: 0}
+  DestroyedSoundPlayer: {fileID: 0}

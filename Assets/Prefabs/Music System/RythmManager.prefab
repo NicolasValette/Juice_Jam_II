@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3617444274039170341}
   - component: {fileID: 3617444274039170340}
   - component: {fileID: 3617444274039170395}
+  - component: {fileID: 1032378920}
   m_Layer: 0
   m_Name: RythmManager
   m_TagString: Untagged
@@ -144,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d88e65d21df1fb4cbdbced3164e1541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _music: {fileID: 11400000, guid: 7f9c5943a807945418d5f5c68e468979, type: 2}
+  _music: {fileID: 11400000, guid: 4f444fa3e038cab4cb7e917049ce24c7, type: 2}
   _threshold: 0.2
   SpawnNotePos: {fileID: 0}
   RemoveNotePos: {fileID: 0}
@@ -277,7 +278,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3617444274039170337}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 25f611e0d3d4ec14598063c523035bb1, type: 3}
   m_Name: 
@@ -348,3 +349,15 @@ MonoBehaviour:
   - 0
   - 0
   cube: {fileID: 4607145649104478102, guid: e107aa377859152409799cf5c2f4387c, type: 3}
+--- !u!114 &1032378920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3617444274039170337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d112661486220cd4cbb73a51d6c9ec96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

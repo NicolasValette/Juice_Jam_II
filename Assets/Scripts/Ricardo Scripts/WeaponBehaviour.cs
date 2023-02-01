@@ -34,11 +34,9 @@ public class WeaponBehaviour : MonoBehaviour
         
     }
 
-    private void OnEnable()
+    public void OnEnable()
     {
-        Locked = false;
-
-        if (weaponData._autoFire)
+        if (!Locked && weaponData._autoFire)
             InvokeRepeating("fireProjectile", 0, weaponData._fireRate);
     }
 
@@ -60,7 +58,11 @@ public class WeaponBehaviour : MonoBehaviour
         }
     }
 
-    void Unlock()
+    public void ByPlayer(CharacterController _characterController)
+    {
+        characterController = _characterController;
+    }
+    public void Unlock()
     {
         Locked = false;
     }

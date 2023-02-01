@@ -75,7 +75,10 @@ public class PlayerController : CharacterController
     {
         weaponSpawnedObject = (GameObject)Instantiate(playerData._weapons._weaponsList[index]._weaponPrefab, 
             weaponSpawner.transform.position, weaponSpawner.transform.rotation, weaponSpawner.transform);
+        weaponSpawnedObject.GetComponent<WeaponBehaviour>().ByPlayer(this);
+        weaponSpawnedObject.GetComponent<WeaponBehaviour>().Unlock();
+        weaponSpawnedObject.GetComponent<WeaponBehaviour>().OnEnable();
     }
-    
+
     #endregion Weapon & fire
 }

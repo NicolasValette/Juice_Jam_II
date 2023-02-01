@@ -15,7 +15,7 @@ MonoBehaviour:
   autoFire: 1
   icon: {fileID: 0}
   Name: Simple Canon
-  fireRate: 1
+  fireRate: 0.5
   turboFireRate: 2
   damage: 5
   criticalChance: 5

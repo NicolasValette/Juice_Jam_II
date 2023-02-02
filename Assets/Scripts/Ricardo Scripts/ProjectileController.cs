@@ -98,6 +98,8 @@ public class ProjectileController : MonoBehaviour
         if (collision.transform.tag != "NoBulletCollision")
         {
             _collision = collision;
+            if (collision.transform.GetComponent<EnnemyController>() != null)
+                collision.transform.GetComponent<EnnemyController>().ReceiveDamages(GetDamages());
 
             if ((collision.transform.GetComponent<EnnemyController>() == null
                 || (collision.transform.GetComponent<EnnemyController>() && NoDestroyOnEnnemyCollision == false))

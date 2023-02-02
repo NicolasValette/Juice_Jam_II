@@ -73,7 +73,7 @@ public class PlayerController : CharacterController
         if (weaponSpawnedObject != null)
             Destroy(weaponSpawnedObject);
     }
-
+    
     void SpawnActualWeapon(int index)
     {
         weaponSpawnedObject = (GameObject)Instantiate(playerData._weapons._weaponsList[index]._weaponPrefab, 

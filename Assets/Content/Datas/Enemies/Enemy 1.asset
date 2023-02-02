@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Enemy 1
   m_EditorClassIdentifier: 
   prefab: {fileID: 6192883215628668110, guid: 8d8cbdce8935f9d4fb45fb9f09a50a27, type: 3}
-  maxHitPoints: 20
+  maxHitPoints: 5
   lowMoveSpeed: 2.5
   mediumMoveSpeed: 5
   maxMoveSpeed: 7.5
@@ -25,3 +25,4 @@ MonoBehaviour:
   destroyedSound: {fileID: 0}
   moveType: 0
   stayDuration: 10
+  collisionDamages: 5

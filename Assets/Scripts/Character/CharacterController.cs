@@ -50,7 +50,7 @@ public abstract class CharacterController : MonoBehaviour
             // verify if the collision is an entering ennemy bullet
             if (bulletController != null)
             {
-             //   Debug.Log("LifePoint > 0 OnCollisionEnter bulletController");
+                Debug.Log("LifePoint > 0 OnCollisionEnter bulletController");
                 // Receive damages from the bullet                  
                 ReceiveDamages(bulletController.GetDamages());
             } 
@@ -65,8 +65,9 @@ public abstract class CharacterController : MonoBehaviour
         }
     }
 
-    protected void ReceiveDamages(int damages) // the object receives damages from a colliding ennemy bullet
+    public void ReceiveDamages(int damages) // the object receives damages from a colliding ennemy bullet
     {
+        Debug.Log("ReceiveDamages");
         // verify if the object is not invincible
         if (MaxLifePoint != -1)
         {

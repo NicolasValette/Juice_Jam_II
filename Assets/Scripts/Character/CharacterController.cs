@@ -140,7 +140,7 @@ public abstract class CharacterController : MonoBehaviour
 
     void InstantiateFXForDestruction()
     {
-        if (enemyData._fXSpawnerDestroyedObjPrefab != null)
+        if (enemyData != null && enemyData._fXSpawnerDestroyedObjPrefab != null)
         {
             // Instantiate the particle system at the impact position
             GameObject spawner = Instantiate<GameObject>(enemyData._fXSpawnerDestroyedObjPrefab, DestroyedFXPositionObj.transform.position,

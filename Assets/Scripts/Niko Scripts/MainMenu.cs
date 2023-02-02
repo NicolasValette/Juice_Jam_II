@@ -44,6 +44,13 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
+    public void Return()
+    {
+        _menu.SetActive(true);
+        _shop.SetActive(false);
+        GameHandler.Instance.IsStartScreen = true;
+    }
+
     public void StartGame()
     {
         if (GameHandler.Instance.IsShopLevel || GameHandler.Instance.IsStartScreen)

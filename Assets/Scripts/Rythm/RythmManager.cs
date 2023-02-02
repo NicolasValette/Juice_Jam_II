@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,8 @@ public class RythmManager : MonoBehaviour
     private GameObject _notePrefab;
     [SerializeField]
     private float _perfectThreshold = 0.05f;
+    [SerializeField]
+    private GameObject _goldPrefab;
 
     private AudioSource musicSource;
     private int _actualCombo = 0;
@@ -152,5 +155,9 @@ public class RythmManager : MonoBehaviour
     {
         musicSource.Stop();
     }
-    
+    public void WinGold(Transform noteTransform)
+    {
+        Instantiate(_goldPrefab, noteTransform.position, noteTransform.rotation);
+    }
+
 }

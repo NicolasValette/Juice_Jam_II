@@ -37,6 +37,7 @@ public class MoveNote : MonoBehaviour
     }
     public void Miss()
     {
+        anim.SetBool("Dead", true);
         Destroy(gameObject);
     }
     public void Hit()

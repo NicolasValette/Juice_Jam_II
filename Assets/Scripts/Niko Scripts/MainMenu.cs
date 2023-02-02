@@ -51,19 +51,19 @@ public class MainMenu : MonoBehaviour
         }
         else
         {
-            EventManager.StopListening(EventManager.Events.OnNoteHit, ShakeMenu);
+            EventManager.StopListening(EventManager.Events.OnBeatChange, ShakeMenu);
             GameHandler.Instance.LoadNextLevel();
         }
        
     }
     public void ShakeMenu()
     {
-        _menu.transform.DOShakeScale(0.75f, 0.5f);
-        _menu.transform.DOShakeRotation(0.75f, 10f, 5);
-        _menu.transform.DOShakePosition(0.75f);
+        _menu.transform.DOShakeScale(0.75f, 0.25f);
+        _menu.transform.DOShakeRotation(0.75f, 7f, 5);
+        _menu.transform.DOShakePosition(0.5f);
         _shop.transform.DOShakeScale(0.75f, 0.5f);
-        _shop.transform.DOShakeRotation(0.75f, 10f, 5);
-        _shop.transform.DOShakePosition(0.75f);
+        _shop.transform.DOShakeRotation(0.75f, 7f, 5);
+        _shop.transform.DOShakePosition(0.5f);
     }
     public void PayToWin ()
     {

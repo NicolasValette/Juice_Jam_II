@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PickUpWeapon : MonoBehaviour
 {
+    private WeaponData _weaponData;
     // Start is called before the first frame update
     void Start()
     {

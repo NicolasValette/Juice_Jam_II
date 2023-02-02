@@ -37,12 +37,13 @@ public class EnnemyController : CharacterController
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("collision");
-        if (collision.gameObject.CompareTag("Player"))
+     //   Debug.Log("collision");
+        if (collision.gameObject.GetComponent<PlayerController>() != null)
         {
             Destroy(gameObject);
         }
     }
+
     public void Explode()
     {
         Debug.Log("Explode");

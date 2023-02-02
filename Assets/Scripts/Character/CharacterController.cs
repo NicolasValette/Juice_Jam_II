@@ -11,6 +11,10 @@ public abstract class CharacterController : MonoBehaviour
     public EnemyData _enemyData { get { return enemyData; } }
 
     [SerializeField]
+    Animator animator;
+    public Animator _animator { get { return animator; } }
+
+    [SerializeField]
     bool IsPlayer = false;
     public bool _IsPlayer { get { return IsPlayer; } }
 
@@ -109,33 +113,40 @@ public abstract class CharacterController : MonoBehaviour
 
     void DestroySelf() // destroy itself and depending objects
     {
-     /*   if (FiringParticleSystem != null)
-            FiringParticleSystem.Stop();
-        */
-
-        if (HowDestroy == HowDestroyEnum.DestroyObject)
-        {
-            // destroy the object
-         //   Destroy(CanonTurret);
-            Destroy(gameObject);
-
-        }
-        else if (HowDestroy == HowDestroyEnum.DisableComponent)
-        {
-            // disable the object
-            this.enabled = false;
-        }
-
-        InstantiateFXForDestruction();
-        PlayDestructionSound();
-
+        /*   if (FiringParticleSystem != null)
+               FiringParticleSystem.Stop();
+           */
         // Open the Win Menu if the Player's tank is destroyed 
         if (IsPlayer)
         {
+            animator.CrossFade("Die", 0.2f);
+            Invoke("Destroying", 5);
             // TODO Event
-        //    TankDestroyed?.Invoke();
-        //  playerController.gameStarted = false;
+            //    TankDestroyed?.Invoke();
+            //  playerController.gameStarted = false;
         }
+        else
+        {
+            if (HowDestroy == HowDestroyEnum.DestroyObject)
+            {
+                // destroy the object
+                //   Destroy(CanonTurret);
+                Destroying();
+
+            }
+            else if (HowDestroy == HowDestroyEnum.DisableComponent)
+            {
+                // disable the object
+                this.enabled = false;
+            }
+        }
+        InstantiateFXForDestruction();
+        PlayDestructionSound();       
+    }
+
+    void Destroying()
+    {
+        Destroy(gameObject);
     }
 
     void InstantiateFXForDestruction()
@@ -155,7 +166,10 @@ public abstract class CharacterController : MonoBehaviour
             DestroyedSoundPlayer.enabled = true;
             DestroyedSoundPlayer.Stop();
             DestroyedSoundPlayer.loop = false;
-            DestroyedSoundPlayer.PlayOneShot(enemyData._destroyedSound);
+            if (enemyData != null)           
+                DestroyedSoundPlayer.PlayOneShot(enemyData._destroyedSound);
+            else if (IsPlayer == true)
+                DestroyedSoundPlayer.PlayOneShot(transform.GetComponent<PlayerController>()._playerData._destroyedSound);
         }
 
     }

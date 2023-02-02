@@ -25,7 +25,7 @@ public class EnnemyController : CharacterController
 
     void Update()
     {
-        if (_enemyData._moveType == EnemyData.MoveTypeEnum.RushOnPlayer)
+        if (transform != null && _enemyData._moveType == EnemyData.MoveTypeEnum.RushOnPlayer)
             AimAndRushPlayer();
     }
 

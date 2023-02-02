@@ -11,7 +11,8 @@ public class PlayerController : CharacterController
 
     [SerializeField]
     PlayerData playerData;
-
+    public PlayerData _playerData { get { return playerData; } }
+    
     [SerializeField]
     float actualSpeed = 1.0f;
 

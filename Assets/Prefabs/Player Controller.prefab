@@ -144,6 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 0}
+  animator: {fileID: 2745143316064529710}
   IsPlayer: 1
   playerController: {fileID: 0}
   MaxLifePoint: 1
@@ -221,5 +222,10 @@ PrefabInstance:
 --- !u!4 &2419009352170975505 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3727036269133238410, guid: 99323cf6a29b778479ab952c9318867d, type: 3}
+  m_PrefabInstance: {fileID: 1309170409334153627}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2745143316064529710 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3761542254469106869, guid: 99323cf6a29b778479ab952c9318867d, type: 3}
   m_PrefabInstance: {fileID: 1309170409334153627}
   m_PrefabAsset: {fileID: 0}

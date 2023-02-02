@@ -17,7 +17,10 @@ public class EnemyData : CharacterData
     [SerializeField]
     protected float stayDuration = 5f;
     public float _stayDuration { get { return stayDuration; } }
-
+    
+    [SerializeField]
+    protected int collisionDamages = 5;
+    public int _collisionDamages { get { return collisionDamages; } }
     #endregion Variables
 
 

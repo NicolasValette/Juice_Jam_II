@@ -43,19 +43,21 @@ public abstract class CharacterController : MonoBehaviour
     void OnCollisionEnter(Collision collision) // object is collided by anther object, verify if the other is an ennemy bullet
     {
         ProjectileController bulletController = collision.transform.GetComponent<ProjectileController>();
-
-        if(bulletController != null) Debug.Log("OnCollisionEnter bulletController");
-
+        EnnemyController ennemyController = collision.transform.GetComponent<EnnemyController>();
 
         if (LifePoint > 0)
         {
             // verify if the collision is an entering ennemy bullet
             if (bulletController != null)
             {
-                Debug.Log("LifePoint > 0 OnCollisionEnter bulletController");
+             //   Debug.Log("LifePoint > 0 OnCollisionEnter bulletController");
                 // Receive damages from the bullet                  
                 ReceiveDamages(bulletController.GetDamages());
-            }            
+            } 
+            else if(IsPlayer && ennemyController != null)
+            {
+                ReceiveDamages(ennemyController.enemyData._collisionDamages);
+            }
         }
         else
         {

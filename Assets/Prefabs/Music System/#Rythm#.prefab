@@ -383,7 +383,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2765712320673094643}
   - component: {fileID: 2765712320673094641}
-  - component: {fileID: 2765712320673094642}
   m_Layer: 0
   m_Name: Camera Canvas
   m_TagString: Untagged
@@ -449,14 +448,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &2765712320673094642
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2765712320673094640}
-  m_Enabled: 1
 --- !u!1 &2765712321053672755
 GameObject:
   m_ObjectHideFlags: 0

@@ -81,7 +81,12 @@ public class RythmManager : MonoBehaviour
             Debug.Log("beatlist++");
             EventManager.TriggerEvent(_music._beatsList[_eventInBeatListIndex]._eventAction);
             _eventInBeatListIndex++;
-        }    
+        }   
+        if (_songTime < _songPositionInSeconds)
+        {
+            Debug.Log("EndSong");
+            EventManager.TriggerEvent(EventManager.Events.EndSong);
+        }
     }
 
     private void InitAttributes()
@@ -99,7 +104,12 @@ public class RythmManager : MonoBehaviour
     }
     public bool IsNoteCorrectlyHit()
     {
-        GameObject actualNote = _noteQueue.Peek();
+        
+        if (!_noteQueue.TryPeek(out GameObject actualNote))
+        {
+            return false;
+        }
+        
         float noteBeat = actualNote.GetComponent<MoveNote>().BeatOfNote - 1f;        //Because the math is done 1 beat behind;
         //Debug.Log("Pos : " + _songPositionInBeat + ", Treshold : " + _threshold + ", previous : " + _previousBeat +
         //    "\ntest : _songPositionInBeat >= _previousBeat - _threshold || _songPositionInBeat <= _previousBeat + _threshold = " +

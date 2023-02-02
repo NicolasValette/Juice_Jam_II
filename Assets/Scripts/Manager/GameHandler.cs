@@ -19,8 +19,8 @@ public class GameHandler : MonoBehaviour
     [SerializeField]
     private string _winSceneName;
     private int _currentLevel = -1;
-    public bool IsShopLevel { get; private set; } = false;
-    public bool IsStartScreen { get; set; } = true; // the game starts here
+    public bool IsShopLevel = false;
+    public bool IsStartScreen = true; // the game starts here
 
 
     private void Awake()

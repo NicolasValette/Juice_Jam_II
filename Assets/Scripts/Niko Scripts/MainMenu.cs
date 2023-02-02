@@ -13,8 +13,11 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     private GameObject _shop;
 
+    private AudioSource _audioSource;
+
     private void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
         if (GameHandler.Instance.IsShopLevel)
         {
             _menu.SetActive(false);
@@ -74,6 +77,7 @@ public class MainMenu : MonoBehaviour
         else
         {
             Debug.Log("PAUVRE");
+            _audioSource.Play();
             _shop.GetComponentInChildren<Text>().DOText("Not Enough Money, Go get more gold to buy your victory !\n You need 50 golds", 5f, true, ScrambleMode.All);
         }
     }

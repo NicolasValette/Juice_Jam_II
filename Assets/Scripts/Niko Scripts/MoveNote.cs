@@ -10,7 +10,8 @@ public class MoveNote : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         BeatOfNote = RythmManager.Instance._previousBeat + 2f;
-        transform.DOMove(RythmManager.Instance.RemoveNotePos.position, (RythmManager.Instance.BeatsShown * RythmManager.Instance._secondePerBeat) * 2);
+        transform.DOMove(RythmManager.Instance.RemoveNotePos.position, (RythmManager.Instance.BeatsShown * RythmManager.Instance._secondePerBeat) * 2).OnKill(Miss);
+        
         anim.SetFloat("Speed", 1f);
         //Debug.Log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~Spawn : " + gameObject.transform.position);
     }

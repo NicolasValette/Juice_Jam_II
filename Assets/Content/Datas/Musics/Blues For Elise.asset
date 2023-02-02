@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Blues For Elise
   m_EditorClassIdentifier: 
   audioClip: {fileID: 8300000, guid: 595f159f1d056f2428a0fdcb0a591d6e, type: 3}
-  bPM: 63.5
+  bPM: 127
   timeLine: {fileID: 0}
   beatsList: []

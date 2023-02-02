@@ -71,7 +71,7 @@ public class RythmManager : MonoBehaviour
             if (_noteQueue.Count >= BeatsShown)
             {
                 GameObject missedNote = _noteQueue.Dequeue();
-                missedNote.GetComponent<MoveNote>().Miss();
+                //missedNote.GetComponent<MoveNote>().Miss();
             }
             _noteQueue.Enqueue(note);
             EventManager.TriggerEvent(EventManager.Events.OnBeatChange);

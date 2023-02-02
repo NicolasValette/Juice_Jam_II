@@ -28,11 +28,11 @@ public class MainMenu : MonoBehaviour
     }
     private void OnEnable()
     {
-        EventManager.StartListening(EventManager.Events.OnNoteHit, ShakeMenu);
+        EventManager.StartListening(EventManager.Events.OnBeatChange, ShakeMenu);
     }
     private void OnDisable()
     {
-        EventManager.StopListening(EventManager.Events.OnNoteHit, ShakeMenu);
+        EventManager.StopListening(EventManager.Events.OnBeatChange, ShakeMenu);
     }
 
     public void Quit()
@@ -61,6 +61,9 @@ public class MainMenu : MonoBehaviour
         _menu.transform.DOShakeScale(0.75f, 0.5f);
         _menu.transform.DOShakeRotation(0.75f, 10f, 5);
         _menu.transform.DOShakePosition(0.75f);
+        _shop.transform.DOShakeScale(0.75f, 0.5f);
+        _shop.transform.DOShakeRotation(0.75f, 10f, 5);
+        _shop.transform.DOShakePosition(0.75f);
     }
     public void PayToWin ()
     {

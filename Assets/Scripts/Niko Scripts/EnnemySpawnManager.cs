@@ -10,6 +10,7 @@ public class EnnemySpawnManager : MonoBehaviour
     GameObject _ennemyPrefab;
     [SerializeField]
     Transform _playerPos;
+
     // Start is called before the first frame update
     void Start()
     {

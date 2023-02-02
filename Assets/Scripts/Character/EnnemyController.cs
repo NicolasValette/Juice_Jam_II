@@ -31,8 +31,11 @@ public class EnnemyController : CharacterController
 
     void AimAndRushPlayer()
     {
-        Vector3 dest = Vector3.Normalize(PlayerPosition.position - transform.position);
-        transform.Translate(dest * _enemyData._mediumMoveSpeed * Time.deltaTime);
+        if (transform != null)
+        {
+            Vector3 dest = Vector3.Normalize(PlayerPosition.position - transform.position);
+            transform.Translate(dest * _enemyData._mediumMoveSpeed * Time.deltaTime);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)

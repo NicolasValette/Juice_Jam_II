@@ -17,18 +17,18 @@ MonoBehaviour:
   timeLine: {fileID: 0}
   beatsList:
   - timeCode: 1
-    eventAction: 4
+    eventAction: 5
   - timeCode: 3
-    eventAction: 4
+    eventAction: 5
   - timeCode: 5
-    eventAction: 4
+    eventAction: 5
   - timeCode: 7
-    eventAction: 4
+    eventAction: 5
   - timeCode: 9
-    eventAction: 4
+    eventAction: 5
   - timeCode: 11
-    eventAction: 4
+    eventAction: 5
   - timeCode: 13
-    eventAction: 4
+    eventAction: 5
   - timeCode: 15
-    eventAction: 4
+    eventAction: 5

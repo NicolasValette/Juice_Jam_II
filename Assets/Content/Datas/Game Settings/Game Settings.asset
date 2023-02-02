@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e01b70e63619324fae9481adbf86138, type: 3}
   m_Name: Game Settings
   m_EditorClassIdentifier: 
+  PerfectNoteAmountToFastFire: 5
+  PerfectNoteAmountToTurboFire: 10
   player: {fileID: 11400000, guid: 473a85d8f7cde6240aa1bc960d7c11b7, type: 2}
   uI: {fileID: 11400000, guid: 87fcca07a2d60cc47bee8bd71c2966c4, type: 2}
   gameContent:
@@ -19,8 +21,10 @@ MonoBehaviour:
     - {fileID: 11400000, guid: ff3c885b223741f4fab2810173b740f2, type: 2}
     weaponsList:
     - {fileID: 11400000, guid: 9c0fcb0c908dc97499dd0d254b3d6940, type: 2}
+    - {fileID: 11400000, guid: 3526fce840f3a074ebb1db1562df0e79, type: 2}
     petsList: []
     enemiesList:
     - {fileID: 11400000, guid: efa4cab4b0227c1478375fe538ffe9d1, type: 2}
     musicsList:
     - {fileID: 11400000, guid: 7f9c5943a807945418d5f5c68e468979, type: 2}
+    - {fileID: 11400000, guid: 4f444fa3e038cab4cb7e917049ce24c7, type: 2}

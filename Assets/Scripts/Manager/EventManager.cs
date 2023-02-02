@@ -14,6 +14,7 @@ public class EventManager
         EnnemySpawn,
         BiggerEnnemy,
         EndSong,
+        LaunchWave,
         Boss
     }
     private Dictionary<Events, Action> eventDictionnary;
@@ -59,6 +60,11 @@ public class EventManager
         {
             eventToStopListen -= action;
             Instance.eventDictionnary[eventName] = eventToStopListen;
+            if (Instance.eventDictionnary[eventName] == null)
+            {
+                Instance.eventDictionnary.Remove(eventName);
+                
+            }
         }
     }
 
@@ -69,7 +75,7 @@ public class EventManager
         if (Instance.eventDictionnary.TryGetValue(eventName, out eventToTrigger))
         {
             //Debug.Log("Action : " + eventToTrigger.ToString());
-            eventToTrigger.Invoke();
+            eventToTrigger?.Invoke();
         }
     }
 

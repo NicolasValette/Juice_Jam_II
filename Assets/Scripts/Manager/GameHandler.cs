@@ -84,7 +84,10 @@ public class GameHandler : MonoBehaviour
     public void IncreaseGold()
     {
         if (!IsShopLevel && !IsStartScreen)
+        {
+            EventManager.TriggerEvent(EventManager.Events.OnGoldWin);
             goldAmount++;
+        }
     }
     public void Win()
     {

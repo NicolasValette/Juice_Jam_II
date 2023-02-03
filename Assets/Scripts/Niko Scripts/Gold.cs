@@ -10,6 +10,7 @@ public class Gold : MonoBehaviour
     {
         transform.DOLocalRotate(new Vector3(360, 0, 360), 0.5f, RotateMode.FastBeyond360).SetRelative(true).SetEase(Ease.Linear).OnKill(Stop);
         transform.DOShakePosition(0.5f, 0.1f);
+        GetComponent<AudioSource>().Play();
     }
 
     //private void OnEnable()

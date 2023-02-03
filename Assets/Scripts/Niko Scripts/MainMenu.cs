@@ -12,6 +12,10 @@ public class MainMenu : MonoBehaviour
     private GameObject _menu;
     [SerializeField]
     private GameObject _shop;
+    [SerializeField]
+    private AudioClip _messageGoldClip;
+    [SerializeField]
+    private AudioClip _menuHover;
 
     private AudioSource _audioSource;
 
@@ -41,6 +45,7 @@ public class MainMenu : MonoBehaviour
     public void Quit()
     {
         Debug.Log("Quit");
+        PlaySelectOption();
         Application.Quit();
     }
 
@@ -53,6 +58,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
+        PlaySelectOption();
         if (GameHandler.Instance.IsShopLevel || GameHandler.Instance.IsStartScreen)
         {
             _menu.SetActive(false);
@@ -84,8 +90,14 @@ public class MainMenu : MonoBehaviour
         else
         {
             Debug.Log("PAUVRE");
+            _audioSource.clip = _messageGoldClip;
             _audioSource.Play();
             _shop.GetComponentInChildren<Text>().DOText("Not Enough Money, Go get more gold to buy your victory !\n You need 50 golds", 5f, true, ScrambleMode.All);
         }
+    }
+    public void PlaySelectOption()
+    {
+        _audioSource.clip = _menuHover;
+        _audioSource.Play();
     }
 }

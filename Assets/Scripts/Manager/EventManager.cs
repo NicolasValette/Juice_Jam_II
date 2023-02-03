@@ -15,7 +15,8 @@ public class EventManager
         BiggerEnnemy,
         EndSong,
         LaunchWave,
-        Boss
+        Boss,
+        OnGoldWin
     }
     private Dictionary<Events, Action> eventDictionnary;
 

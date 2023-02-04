@@ -16,9 +16,13 @@ public class MainMenu : MonoBehaviour
     private AudioClip _messageGoldClip;
     [SerializeField]
     private AudioClip _menuHover;
+    [SerializeField]
+    private GameObject _tuto;
+    [SerializeField]
+    private GameObject _spaceImage;
 
     private AudioSource _audioSource;
-
+    private bool _isReadyToPlay;
     private void Start()
     {
         _audioSource = GetComponent<AudioSource>();
@@ -32,14 +36,20 @@ public class MainMenu : MonoBehaviour
             _menu.SetActive(true);
             _shop.SetActive(false);
         }
+        if (!GameHandler.Instance.DisplayTutorial)
+        {
+            _tuto.SetActive(false);
+        }
     }
     private void OnEnable()
     {
         EventManager.StartListening(EventManager.Events.OnBeatChange, ShakeMenu);
+        EventManager.StartListening(EventManager.Events.OnNoteHit, StartGame);
     }
     private void OnDisable()
     {
         EventManager.StopListening(EventManager.Events.OnBeatChange, ShakeMenu);
+        EventManager.StopListening(EventManager.Events.OnNoteHit, StartGame);
     }
 
     public void Quit()
@@ -47,6 +57,12 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Quit");
         PlaySelectOption();
         Application.Quit();
+    }
+    public void ReturnToMainScreen()
+    {
+        Debug.Log("Return");
+        PlaySelectOption();
+        GameHandler.Instance.ReturnMainScreen();
     }
 
     public void Return()
@@ -56,7 +72,7 @@ public class MainMenu : MonoBehaviour
         GameHandler.Instance.IsStartScreen = true;
     }
 
-    public void StartGame()
+    public void PreloadMenu()
     {
         PlaySelectOption();
         if (GameHandler.Instance.IsShopLevel || GameHandler.Instance.IsStartScreen)
@@ -65,13 +81,16 @@ public class MainMenu : MonoBehaviour
             _shop.SetActive(true);
             GameHandler.Instance.IsStartScreen = false;
         }
-        else
+    }
+    public void StartGame()
+    {
+        if (_isReadyToPlay)
         {
             EventManager.StopListening(EventManager.Events.OnBeatChange, ShakeMenu);
             GameHandler.Instance.LoadNextLevel();
         }
-       
     }
+
     public void ShakeMenu()
     {
         _menu.transform.DOShakeScale(0.75f, 0.25f);
@@ -80,8 +99,14 @@ public class MainMenu : MonoBehaviour
         _shop.transform.DOShakeScale(0.75f, 0.5f);
         _shop.transform.DOShakeRotation(0.75f, 7f, 5);
         _shop.transform.DOShakePosition(0.5f);
+        _tuto.transform.DOShakeScale(0.75f, 0.5f);
+        _tuto.transform.DOShakeRotation(0.75f, 7f, 5);
+        _tuto.transform.DOShakePosition(0.5f);
+        _spaceImage.transform.DOShakeScale(0.75f, 0.75f);
+        _spaceImage.transform.DOShakeRotation(0.75f, 7f, 5);
+        _spaceImage.transform.DOShakePosition(0.5f);
     }
-    public void PayToWin ()
+    public void PayToWin()
     {
         if (GameHandler.Instance.goldAmount >= GameHandler.Instance.WinPrice)
         {
@@ -93,6 +118,9 @@ public class MainMenu : MonoBehaviour
             _audioSource.clip = _messageGoldClip;
             _audioSource.Play();
             _shop.GetComponentInChildren<Text>().DOText("Not Enough Money, Go get more gold to buy your victory !\n You need 50 golds", 5f, true, ScrambleMode.All);
+            _isReadyToPlay = true;
+            _shop.GetComponentInChildren<Button>().enabled = false;
+            _spaceImage.SetActive(true);
         }
     }
     public void PlaySelectOption()

@@ -15,7 +15,8 @@ MonoBehaviour:
   autoFire: 1
   icon: {fileID: 0}
   Name: Triple Canon
-  fireRate: 0.5
+  fireRate: 150
+  fastFireRate: 0
   turboFireRate: 2
   damage: 5
   criticalChance: 5

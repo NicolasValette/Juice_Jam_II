@@ -48,6 +48,7 @@ public class MoveNote : MonoBehaviour
         //gameObject.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
         
         anim.SetBool("Dead", true);
+
         RythmManager.Instance.WinGold(transform);
         Destroy(gameObject, ps.main.duration);
 

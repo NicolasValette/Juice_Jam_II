@@ -14,17 +14,19 @@ public class EnnemySpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Debug.Log(gameObject.name);
     }
     private void OnEnable()
     {
         EventManager.StartListening(EventManager.Events.EnnemySpawn, Spawn);
         EventManager.StartListening(EventManager.Events.OnBeatChange, Spawn);
+        EventManager.StartListening(EventManager.Events.OnPlayerDeath, StopSpawn);
     }
     private void OnDisable()
     {
         EventManager.StopListening(EventManager.Events.EnnemySpawn, Spawn);
         EventManager.StopListening(EventManager.Events.OnBeatChange, Spawn);
+        EventManager.StopListening(EventManager.Events.OnPlayerDeath, StopSpawn);
     }
 
     // Update is called once per frame
@@ -41,6 +43,10 @@ public class EnnemySpawnManager : MonoBehaviour
             GameObject ennemy = Instantiate(_ennemyPrefab, _spawnList[i].position, _spawnList[i].rotation);
             ennemy.GetComponent<EnnemyController>().PlayerPosition = _playerPos;
         }
+    }
+    public void StopSpawn()
+    {
+        gameObject.SetActive(false);
     }
    
 }

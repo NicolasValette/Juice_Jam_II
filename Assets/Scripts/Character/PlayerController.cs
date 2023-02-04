@@ -45,6 +45,11 @@ public class PlayerController : CharacterController
     {
         HandlePlayerMovment();
     }
+
+    public void Death()
+    {
+        Debug.Log("dead");
+    }
     #region Movement
     void HandlePlayerMovment()
     {

@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WIP Scenes/NikoScene/Win Scene.unity
     guid: 7ac1a874d3f5856498f7689c277dd8e9
+  - enabled: 1
+    path: Assets/Scenes/WIP Scenes/NikoScene/Game Over.unity
+    guid: 24e56dbd598df3148b0b60de09196938
   m_configObjects: {}

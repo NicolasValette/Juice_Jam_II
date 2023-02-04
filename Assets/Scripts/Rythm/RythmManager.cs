@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RythmManager : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class RythmManager : MonoBehaviour
     private float _perfectThreshold = 0.05f;
     [SerializeField]
     private GameObject _goldPrefab;
+  
 
     private AudioSource musicSource;
     private int _actualCombo = 0;
@@ -137,12 +139,21 @@ public class RythmManager : MonoBehaviour
         //Debug.Log("__________________");
         if (isCorrect)
         {
+            if (_actualCombo >= GameHandler.Instance.FirstfirstThresholdFire)
+            {
+                GameHandler.Instance.ComboMultipl = 2;
+            }
+            if (_actualCombo >= GameHandler.Instance.SecondThresholdFire)
+            {
+                GameHandler.Instance.ComboMultipl = 4;
+            }
             _actualCombo++;
             actualNote.GetComponent<MoveNote>().Hit();
         }
         else
         {
             _actualCombo = 0;
+            GameHandler.Instance.ComboMultipl = 1;
         }
         if  (isGood)
         {
@@ -163,6 +174,7 @@ public class RythmManager : MonoBehaviour
         _songTimeInBeats = _songTime * _secondePerBeat;
         musicSource.Play();
         IsPlaying = true;
+        EventManager.TriggerEvent(EventManager.Events.OnStartSong);
     }
     public void Stop()
     {
@@ -171,7 +183,9 @@ public class RythmManager : MonoBehaviour
     }
     public void WinGold(Transform noteTransform)
     {
-        Instantiate(_goldPrefab, noteTransform.position, noteTransform.rotation);
+        if (GameHandler.Instance.IsGameOn)
+        {
+            Instantiate(_goldPrefab, noteTransform.position, noteTransform.rotation);
+        }
     }
-
 }

@@ -14,13 +14,12 @@ public class EnnemyController : CharacterController
     private void OnEnable()
     {
         LifePoint = _enemyData._maxHitPoints;
-
-       // EventManager.StartListening(EventManager.Events.OnNoteHit, Explode);
+        EventManager.StartListening(EventManager.Events.OnPlayerDeath, Explode);      
         Invoke("Explode", _enemyData._stayDuration);
     }
     private void OnDisable()
     {
-       // EventManager.StopListening(EventManager.Events.OnNoteHit, Explode);
+       EventManager.StopListening(EventManager.Events.OnPlayerDeath, Explode);
     }
 
     void Update()

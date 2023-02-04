@@ -16,7 +16,12 @@ public class EventManager
         EndSong,
         LaunchWave,
         Boss,
-        OnGoldWin
+        OnGoldWin,
+        OnCombo5,
+        OnCombo10,
+        OnResetCombo,
+        OnPlayerDeath,
+        OnStartSong
     }
     private Dictionary<Events, Action> eventDictionnary;
 

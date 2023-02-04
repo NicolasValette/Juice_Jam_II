@@ -18,7 +18,7 @@ public class Countdown : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (GameHandler.Instance.IsStartScreen || GameHandler.Instance.IsShopLevel)
+        if (GameHandler.Instance.IsStartScreen || GameHandler.Instance.IsShopLevel || GameHandler.Instance.IsGameOver)
         {
             RythmManager.Instance.StartSong();
         }

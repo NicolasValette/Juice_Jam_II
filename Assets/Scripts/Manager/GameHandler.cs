@@ -17,10 +17,25 @@ public class GameHandler : MonoBehaviour
     [SerializeField]
     private string _shopSceneName;
     [SerializeField]
+    private string _startSceneName;
+    [SerializeField]
     private string _winSceneName;
+    [SerializeField]
+    private string _gameOverSceneName;
+    [SerializeField]
+    private int _firstThresholdFire = 5;
+    [SerializeField]
+    private int _secondThresholdFire = 5;
+    public int FirstfirstThresholdFire { get { return _firstThresholdFire; }}
+    public int SecondThresholdFire { get { return _secondThresholdFire; } }
+
     private int _currentLevel = -1;
     public bool IsShopLevel = false;
     public bool IsStartScreen = true; // the game starts here
+    public bool IsGameOver = false;
+    public int ComboMultipl = 1;
+    public bool DisplayTutorial { get; private set; } = true;
+    public bool IsGameOn{ get; private set; } = false;
 
 
     private void Awake()
@@ -40,12 +55,16 @@ public class GameHandler : MonoBehaviour
         EventManager.StartListening(EventManager.Events.OnNoteHit, IncreaseGold);
         EventManager.StartListening(EventManager.Events.OnWin, Win);
         EventManager.StartListening(EventManager.Events.EndSong, EndSong);
+        EventManager.StartListening(EventManager.Events.OnPlayerDeath, GameOver);
+        EventManager.StartListening(EventManager.Events.OnStartSong, StartSong);
     }
     private void OnDisable()
     {
         EventManager.StopListening(EventManager.Events.OnNoteHit, IncreaseGold);
         EventManager.StopListening(EventManager.Events.EndSong, EndSong);
         EventManager.StopListening(EventManager.Events.OnWin, Win);
+        EventManager.StopListening(EventManager.Events.OnPlayerDeath, GameOver);
+        EventManager.StopListening(EventManager.Events.OnStartSong, StartSong);
     }
 
 
@@ -56,16 +75,15 @@ public class GameHandler : MonoBehaviour
     }
     public void LoadNextLevel()
     {
-
         string nextLevelName;
         if (IsStartScreen)
         {
             IsStartScreen = false;
             IsShopLevel = true;
-
         }
         else
         {
+            DisplayTutorial = false;
             RythmManager.Instance.Stop();
             Destroy(RythmManager.Instance.gameObject);
             IsShopLevel = false;
@@ -77,9 +95,6 @@ public class GameHandler : MonoBehaviour
             nextLevelName = _sceneName[_currentLevel];
             SceneManager.LoadScene(nextLevelName);
         }
-
-
-
     }
     public void IncreaseGold()
     {
@@ -103,5 +118,27 @@ public class GameHandler : MonoBehaviour
     {
         RythmManager.Instance.Stop();
         LoadShop();
+    }
+    public void ReturnMainScreen()
+    {
+        IsGameOver = false;
+        IsStartScreen = true;
+        SceneManager.LoadScene(_startSceneName);
+    }
+    public void GameOver()
+    {
+        IsGameOver = true;
+        Invoke("LoadGameOver", 2f);
+    }
+    public void LoadGameOver()
+    {
+        SceneManager.LoadScene(_gameOverSceneName);
+    }
+    public void StartSong()
+    {
+        if (!IsShopLevel && !IsStartScreen && IsGameOver)
+        {
+            IsGameOn = true;
+        }
     }
 }

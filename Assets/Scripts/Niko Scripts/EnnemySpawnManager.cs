@@ -34,12 +34,10 @@ public class EnnemySpawnManager : MonoBehaviour
     }
     public void Spawn()
     {
+        Debug.Log("Spawn");
         for (int i=0; i<_spawnList.Count; i++)
         {
-            if (i%2 == 0)
-            {
-                continue;
-            }
+            
             GameObject ennemy = Instantiate(_ennemyPrefab, _spawnList[i].position, _spawnList[i].rotation);
             ennemy.GetComponent<EnnemyController>().PlayerPosition = _playerPos;
         }

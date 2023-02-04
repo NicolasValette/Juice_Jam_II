@@ -15,20 +15,4 @@ MonoBehaviour:
   audioClip: {fileID: 8300000, guid: f5f5dc00c3da5044aba7744fcdf9bfe1, type: 3}
   bPM: 83
   timeLine: {fileID: 0}
-  beatsList:
-  - timeCode: 1
-    eventAction: 5
-  - timeCode: 3
-    eventAction: 5
-  - timeCode: 5
-    eventAction: 5
-  - timeCode: 7
-    eventAction: 5
-  - timeCode: 9
-    eventAction: 5
-  - timeCode: 11
-    eventAction: 5
-  - timeCode: 13
-    eventAction: 5
-  - timeCode: 15
-    eventAction: 5
+  beatsList: []

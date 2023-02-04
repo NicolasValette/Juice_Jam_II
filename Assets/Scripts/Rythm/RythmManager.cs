@@ -39,6 +39,7 @@ public class RythmManager : MonoBehaviour
     {
         get { return _numberOfPerfect; }
     }
+    public bool IsPlaying {get; private set;} = false;
 
     public float _secondePerBeat;           //Number of second for each beat.
     public float _songPositionInSeconds;    //Position in the active song, in seconds.
@@ -54,7 +55,7 @@ public class RythmManager : MonoBehaviour
     private Queue<GameObject> _noteQueue;
     private int _eventInBeatListIndex = 0;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Instance = this;
         InitAttributes();
@@ -63,6 +64,13 @@ public class RythmManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        if (IsPlaying)
+        {
+            PlayMusic();
+        }
+    }
+    public void PlayMusic()
     {
         _songPositionInSeconds = (float)AudioSettings.dspTime - _songDspTime;
         _songPositionInBeat = _songPositionInSeconds / _secondePerBeat;
@@ -77,6 +85,7 @@ public class RythmManager : MonoBehaviour
                 //missedNote.GetComponent<MoveNote>().Miss();
             }
             _noteQueue.Enqueue(note);
+            Debug.Log("OnBeatChange");
             EventManager.TriggerEvent(EventManager.Events.OnBeatChange);
         }
         if (_eventInBeatListIndex < _music._beatsList.Count && _music._beatsList[_eventInBeatListIndex]._timeCode <= _songPositionInSeconds)
@@ -84,24 +93,20 @@ public class RythmManager : MonoBehaviour
             Debug.Log("beatlist++");
             EventManager.TriggerEvent(_music._beatsList[_eventInBeatListIndex]._eventAction);
             _eventInBeatListIndex++;
-        }   
+        }
         if (_songTime < _songPositionInSeconds)
         {
             Debug.Log("EndSong");
             EventManager.TriggerEvent(EventManager.Events.EndSong);
         }
     }
-
     private void InitAttributes()
     {
         musicSource = GetComponent<AudioSource>();
         musicSource.clip = _music._audioClip;
         _secondePerBeat = 60f / _music._bPM;
-        _songDspTime = (float)AudioSettings.dspTime;
-        _songTime = musicSource.clip.length;
-        _songTimeInBeats = _songTime * _secondePerBeat;
-
-        musicSource.Play();
+        
+        
         _previousBeat = 0;
         _noteQueue = new Queue<GameObject>();
     }
@@ -151,8 +156,17 @@ public class RythmManager : MonoBehaviour
         // return (_songPositionInBeat >= _previousBeat - _threshold && _songPositionInBeat <= _previousBeat + _threshold);
         return isCorrect;
     }
+    public void StartSong()
+    {
+        _songDspTime = (float)AudioSettings.dspTime;
+        _songTime = musicSource.clip.length;
+        _songTimeInBeats = _songTime * _secondePerBeat;
+        musicSource.Play();
+        IsPlaying = true;
+    }
     public void Stop()
     {
+        IsPlaying = true;
         musicSource.Stop();
     }
     public void WinGold(Transform noteTransform)

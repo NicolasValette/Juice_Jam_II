@@ -116,7 +116,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 8
   m_CollisionDetection: 0
 --- !u!199 &-3729440599717132919
 ParticleSystemRenderer:
@@ -4968,6 +4968,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: efa4cab4b0227c1478375fe538ffe9d1, type: 2}
+  animator: {fileID: 0}
   IsPlayer: 0
   playerController: {fileID: 0}
   MaxLifePoint: 1

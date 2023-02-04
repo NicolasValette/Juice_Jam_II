@@ -16,7 +16,7 @@ MonoBehaviour:
   maxHitPoints: 5
   lowMoveSpeed: 2.5
   mediumMoveSpeed: 5
-  maxMoveSpeed: 7.5
+  maxMoveSpeed: 8
   turboMoveSpeed: 1.5
   weapons:
     maxWeaponsAmount: 2

@@ -121,10 +121,10 @@ public class RythmManager : MonoBehaviour
         }
         
         float noteBeat = actualNote.GetComponent<MoveNote>().BeatOfNote - 1f;        //Because the math is done 1 beat behind;
-        //Debug.Log("Pos : " + _songPositionInBeat + ", Treshold : " + _threshold + ", previous : " + _previousBeat +
-        //    "\ntest : _songPositionInBeat >= _previousBeat - _threshold || _songPositionInBeat <= _previousBeat + _threshold = " +
-        //    "\n "+_songPositionInBeat+" >= "+_previousBeat+ "-" +_threshold+" && "+_songPositionInBeat +"<=" +_previousBeat+" + "+_threshold +
-        //    (_songPositionInBeat >= _previousBeat - _threshold && _songPositionInBeat <= _previousBeat + _threshold));
+        Debug.Log("Pos : " + _songPositionInBeat + ", Treshold : " + _threshold + ", noteBeat : " + noteBeat +
+            "\ntest : _songPositionInBeat >= noteBeat - _threshold && _songPositionInBeat <= noteBeat + _threshold = " +
+            "\n " + _songPositionInBeat + " >= " + noteBeat + "-" + _threshold + " && " + _songPositionInBeat + "<=" + noteBeat + " + " + _threshold + " = " +
+            (_songPositionInBeat >= noteBeat - _threshold && _songPositionInBeat <= noteBeat + _threshold));
 
 
         //Debug.Log("Prev : " + _previousBeat);
@@ -139,13 +139,15 @@ public class RythmManager : MonoBehaviour
         //Debug.Log("__________________");
         if (isCorrect)
         {
-            if (_actualCombo >= GameHandler.Instance.FirstfirstThresholdFire)
+            if (_actualCombo >= GameHandler.Instance.FirstfirstThresholdFire && GameHandler.Instance.ComboMultipl == 1)
             {
-                GameHandler.Instance.ComboMultipl = 2;
+               GameHandler.Instance.ComboMultipl = 2;
+               GameHandler.Instance.PowerUp();
             }
-            if (_actualCombo >= GameHandler.Instance.SecondThresholdFire)
+            if (_actualCombo >= GameHandler.Instance.SecondThresholdFire && GameHandler.Instance.ComboMultipl == 2)
             {
                 GameHandler.Instance.ComboMultipl = 4;
+                GameHandler.Instance.PowerUp();
             }
             _actualCombo++;
             actualNote.GetComponent<MoveNote>().Hit();

@@ -26,16 +26,21 @@ public class GameHandler : MonoBehaviour
     private int _firstThresholdFire = 5;
     [SerializeField]
     private int _secondThresholdFire = 5;
-    public int FirstfirstThresholdFire { get { return _firstThresholdFire; }}
+    [SerializeField]
+    private AudioSource _powerUp;
+    public int FirstfirstThresholdFire { get { return _firstThresholdFire; } }
     public int SecondThresholdFire { get { return _secondThresholdFire; } }
 
     private int _currentLevel = -1;
     public bool IsShopLevel = false;
     public bool IsStartScreen = true; // the game starts here
     public bool IsGameOver = false;
+
     public int ComboMultipl = 1;
+
+
     public bool DisplayTutorial { get; private set; } = true;
-    public bool IsGameOn{ get; private set; } = false;
+    public bool IsGameOn { get; private set; } = false;
 
 
     private void Awake()
@@ -98,7 +103,7 @@ public class GameHandler : MonoBehaviour
     }
     public void IncreaseGold()
     {
-        if (!IsShopLevel && !IsStartScreen)
+        if (IsGameOn)
         {
             EventManager.TriggerEvent(EventManager.Events.OnGoldWin);
             goldAmount++;
@@ -106,10 +111,11 @@ public class GameHandler : MonoBehaviour
     }
     public void Win()
     {
+        IsGameOver = true;
         RythmManager.Instance.Stop();
         SceneManager.LoadScene(_winSceneName);
     }
-    private void LoadShop ()
+    private void LoadShop()
     {
         IsShopLevel = true;
         SceneManager.LoadScene(_shopSceneName);
@@ -133,12 +139,17 @@ public class GameHandler : MonoBehaviour
     public void LoadGameOver()
     {
         SceneManager.LoadScene(_gameOverSceneName);
+        Destroy(gameObject);
     }
     public void StartSong()
     {
-        if (!IsShopLevel && !IsStartScreen && IsGameOver)
+        if (!IsShopLevel && !IsStartScreen && !IsGameOver)
         {
             IsGameOn = true;
         }
+    }
+    public void PowerUp()
+    {
+        _powerUp.Play();
     }
 }

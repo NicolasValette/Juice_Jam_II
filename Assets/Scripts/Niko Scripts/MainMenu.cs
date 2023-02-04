@@ -93,8 +93,8 @@ public class MainMenu : MonoBehaviour
 
     public void ShakeMenu()
     {
-        _menu.transform.DOShakeScale(0.75f, 0.25f);
-        _menu.transform.DOShakeRotation(0.75f, 7f, 5);
+        _menu?.transform.DOShakeScale(0.75f, 0.25f);
+        _menu?.transform.DOShakeRotation(0.75f, 7f, 5);
         _menu.transform.DOShakePosition(0.5f);
         _shop.transform.DOShakeScale(0.75f, 0.5f);
         _shop.transform.DOShakeRotation(0.75f, 7f, 5);

@@ -6242,6 +6242,18 @@ PrefabInstance:
       propertyPath: _goldPrefab
       value: 
       objectReference: {fileID: 3103732499986250126, guid: 39c7301d6fec63f46b369793565f467d, type: 3}
+    - target: {fileID: 1464363488082565915, guid: 23317d9926ee31d43ae3bc5fe1013120, type: 3}
+      propertyPath: _musics.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1464363488082565915, guid: 23317d9926ee31d43ae3bc5fe1013120, type: 3}
+      propertyPath: _musics.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7f9c5943a807945418d5f5c68e468979, type: 2}
+    - target: {fileID: 1464363488082565915, guid: 23317d9926ee31d43ae3bc5fe1013120, type: 3}
+      propertyPath: _musics.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7bd3fdd457cfdc34b960d891a09fe0fb, type: 2}
     - target: {fileID: 1464363488082565916, guid: 23317d9926ee31d43ae3bc5fe1013120, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0

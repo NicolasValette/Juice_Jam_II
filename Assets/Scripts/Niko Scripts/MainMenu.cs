@@ -9,17 +9,17 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField]
-    private GameObject _menu;
+    private GameObject _menu = null;
     [SerializeField]
-    private GameObject _shop;
+    private GameObject _shop= null;
     [SerializeField]
     private AudioClip _messageGoldClip;
     [SerializeField]
     private AudioClip _menuHover;
     [SerializeField]
-    private GameObject _tuto;
+    private GameObject _tuto = null;
     [SerializeField]
-    private GameObject _spaceImage;
+    private GameObject _spaceImage = null;
 
     private AudioSource _audioSource;
     private bool _isReadyToPlay;
@@ -28,17 +28,17 @@ public class MainMenu : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
         if (GameHandler.Instance.IsShopLevel)
         {
-            _menu.SetActive(false);
-            _shop.SetActive(true);
+            _menu?.SetActive(false);
+            _shop?.SetActive(true);
         }
         else
         {
-            _menu.SetActive(true);
-            _shop.SetActive(false);
+            _menu?.SetActive(true);
+            _shop?.SetActive(false);
         }
         if (!GameHandler.Instance.DisplayTutorial)
         {
-            _tuto.SetActive(false);
+            _tuto?.SetActive(false);
         }
     }
     private void OnEnable()
@@ -67,8 +67,8 @@ public class MainMenu : MonoBehaviour
 
     public void Return()
     {
-        _menu.SetActive(true);
-        _shop.SetActive(false);
+        _menu?.SetActive(true);
+        _shop?.SetActive(false);
         GameHandler.Instance.IsStartScreen = true;
     }
 
@@ -77,8 +77,8 @@ public class MainMenu : MonoBehaviour
         PlaySelectOption();
         if (GameHandler.Instance.IsShopLevel || GameHandler.Instance.IsStartScreen)
         {
-            _menu.SetActive(false);
-            _shop.SetActive(true);
+            _menu?.SetActive(false);
+            _shop?.SetActive(true);
             GameHandler.Instance.IsStartScreen = false;
         }
     }
@@ -95,16 +95,16 @@ public class MainMenu : MonoBehaviour
     {
         _menu?.transform.DOShakeScale(0.75f, 0.25f);
         _menu?.transform.DOShakeRotation(0.75f, 7f, 5);
-        _menu.transform.DOShakePosition(0.5f);
-        _shop.transform.DOShakeScale(0.75f, 0.5f);
-        _shop.transform.DOShakeRotation(0.75f, 7f, 5);
-        _shop.transform.DOShakePosition(0.5f);
-        _tuto.transform.DOShakeScale(0.75f, 0.5f);
-        _tuto.transform.DOShakeRotation(0.75f, 7f, 5);
-        _tuto.transform.DOShakePosition(0.5f);
-        _spaceImage.transform.DOShakeScale(0.75f, 0.75f);
-        _spaceImage.transform.DOShakeRotation(0.75f, 7f, 5);
-        _spaceImage.transform.DOShakePosition(0.5f);
+        _menu?.transform.DOShakePosition(0.5f);
+        _shop?.transform.DOShakeScale(0.75f, 0.5f);
+        _shop?.transform.DOShakeRotation(0.75f, 7f, 5);
+        _shop?.transform.DOShakePosition(0.5f);
+        _tuto?.transform.DOShakeScale(0.75f, 0.5f);
+        _tuto?.transform.DOShakeRotation(0.75f, 7f, 5);
+        _tuto?.transform.DOShakePosition(0.5f);
+        _spaceImage?.transform.DOShakeScale(0.75f, 0.75f);
+        _spaceImage?.transform.DOShakeRotation(0.75f, 7f, 5);
+        _spaceImage?.transform.DOShakePosition(0.5f);
     }
     public void PayToWin()
     {

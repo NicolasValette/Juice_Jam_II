@@ -8,7 +8,7 @@ public class RythmManager : MonoBehaviour
 {
 
     [SerializeField]
-    private MusicData _music;
+    private List<MusicData> _musics;
     [SerializeField]
     private float _threshold;
     [SerializeField]
@@ -23,6 +23,7 @@ public class RythmManager : MonoBehaviour
     private float _perfectThreshold = 0.05f;
     [SerializeField]
     private GameObject _goldPrefab;
+    private int _musicIndex;
   
 
     private AudioSource musicSource;
@@ -90,10 +91,10 @@ public class RythmManager : MonoBehaviour
             Debug.Log("OnBeatChange");
             EventManager.TriggerEvent(EventManager.Events.OnBeatChange);
         }
-        if (_eventInBeatListIndex < _music._beatsList.Count && _music._beatsList[_eventInBeatListIndex]._timeCode <= _songPositionInSeconds)
+        if (_eventInBeatListIndex < _musics[_musicIndex]._beatsList.Count && _musics[_musicIndex]._beatsList[_eventInBeatListIndex]._timeCode <= _songPositionInSeconds)
         {
             Debug.Log("beatlist++");
-            EventManager.TriggerEvent(_music._beatsList[_eventInBeatListIndex]._eventAction);
+            EventManager.TriggerEvent(_musics[_musicIndex]._beatsList[_eventInBeatListIndex]._eventAction);
             _eventInBeatListIndex++;
         }
         if (_songTime < _songPositionInSeconds)
@@ -104,10 +105,10 @@ public class RythmManager : MonoBehaviour
     }
     private void InitAttributes()
     {
+        _musicIndex = Random.Range(0, _musics.Count);
         musicSource = GetComponent<AudioSource>();
-        musicSource.clip = _music._audioClip;
-        _secondePerBeat = 60f / _music._bPM;
-        
+        musicSource.clip = _musics[_musicIndex]._audioClip;
+        _secondePerBeat = 60f / _musics[_musicIndex]._bPM;
         
         _previousBeat = 0;
         _noteQueue = new Queue<GameObject>();

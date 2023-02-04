@@ -93,7 +93,7 @@ public class GameHandler : MonoBehaviour
             Destroy(RythmManager.Instance.gameObject);
             IsShopLevel = false;
             _currentLevel++;
-            if (_sceneName.Count < _currentLevel)       // If there in not enough level, start a new cycle
+            if (_sceneName.Count <= _currentLevel)       // If there in not enough level, start a new cycle
             {
                 _currentLevel = 0;
             }
@@ -114,10 +114,12 @@ public class GameHandler : MonoBehaviour
         IsGameOver = true;
         RythmManager.Instance.Stop();
         SceneManager.LoadScene(_winSceneName);
+        Destroy(gameObject);
     }
     private void LoadShop()
     {
         IsShopLevel = true;
+        IsGameOn = false;
         SceneManager.LoadScene(_shopSceneName);
     }
     public void EndSong()

@@ -5,6 +5,8 @@ public class MoveNote : MonoBehaviour
     public float BeatOfNote;
     private float timer = 0f;
     private Animator anim;
+    [SerializeField]
+    private bool _IsGold = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +52,10 @@ public class MoveNote : MonoBehaviour
         anim.SetBool("Dead", true);
 
         RythmManager.Instance.WinGold(transform);
+        if (_IsGold)
+        {
+            EventManager.TriggerEvent(EventManager.Events.ExplodeAll);
+        }
         Destroy(gameObject, ps.main.duration);
 
     }

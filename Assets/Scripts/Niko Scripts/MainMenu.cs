@@ -86,7 +86,7 @@ public class MainMenu : MonoBehaviour
     }
     public void StartGame()
     {
-        if (_isReadyToPlay)
+        if (_isReadyToPlay && RythmManager.Instance.Combo>=2)
         {
             EventManager.StopListening(EventManager.Events.OnBeatChange, ShakeMenu);
             GameHandler.Instance.LoadNextLevel();
@@ -107,6 +107,8 @@ public class MainMenu : MonoBehaviour
         _spaceImage?.transform.DOShakeScale(0.75f, 0.75f);
         _spaceImage?.transform.DOShakeRotation(0.75f, 7f, 5);
         _spaceImage?.transform.DOShakePosition(0.5f);
+        _arrow?.transform.DOShakeScale(0.75f, 0.25f);
+        _arrow?.transform.DOShakePosition(0.5f, 5f);
     }
     public void PayToWin()
     {

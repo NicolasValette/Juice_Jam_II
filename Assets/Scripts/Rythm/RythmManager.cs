@@ -20,6 +20,8 @@ public class RythmManager : MonoBehaviour
     [SerializeField]
     private GameObject _notePrefab;
     [SerializeField]
+    private GameObject _GoldenNotePrefab;
+    [SerializeField]
     private float _perfectThreshold = 0.05f;
     [SerializeField]
     private GameObject _goldPrefab;
@@ -57,6 +59,8 @@ public class RythmManager : MonoBehaviour
     public static RythmManager Instance;
     private Queue<GameObject> _noteQueue;
     private int _eventInBeatListIndex = 0;
+    private int _countBeforeGolden = 0;
+    public int CountBeforeGolden { get { return _countBeforeGolden;} }
     // Start is called before the first frame update
     void Awake()
     {
@@ -81,7 +85,16 @@ public class RythmManager : MonoBehaviour
         {
             _previousBeat++;
             GameObject note;
-            note = Instantiate(_notePrefab, SpawnNotePos.position, SpawnNotePos.rotation);
+            if (_countBeforeGolden >= GameHandler.Instance.GoldSpawn)
+            {
+                note = Instantiate(_GoldenNotePrefab, SpawnNotePos.position, SpawnNotePos.rotation);
+                _countBeforeGolden = 0;
+            }
+            else
+            {
+                note = Instantiate(_notePrefab, SpawnNotePos.position, SpawnNotePos.rotation);
+                _countBeforeGolden++;
+            }
             if (_noteQueue.Count >= BeatsShown)
             {
                 GameObject missedNote = _noteQueue.Dequeue();

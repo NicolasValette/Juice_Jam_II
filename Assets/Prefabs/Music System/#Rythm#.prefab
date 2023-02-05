@@ -900,6 +900,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _redBar: {fileID: 2765712320045018712}
+  _shakeScaleStrength: 0.75
+  _shakePosStrength: 10
 --- !u!1001 &2765712320760299067
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -908,6 +910,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 7627595948038441997}
     m_Modifications:
     - target: {fileID: 3617444274039170336, guid: cc6045c4778455646a68b169fbba1fc4, type: 3}
+      propertyPath: _goldPrefab
+      value: 
+      objectReference: {fileID: 3103732499986250126, guid: 39c7301d6fec63f46b369793565f467d, type: 3}
+    - target: {fileID: 3617444274039170336, guid: cc6045c4778455646a68b169fbba1fc4, type: 3}
       propertyPath: SpawnNotePos
       value: 
       objectReference: {fileID: 2765712321567706698}
@@ -915,6 +921,10 @@ PrefabInstance:
       propertyPath: RemoveNotePos
       value: 
       objectReference: {fileID: 2765712321368962827}
+    - target: {fileID: 3617444274039170336, guid: cc6045c4778455646a68b169fbba1fc4, type: 3}
+      propertyPath: _GoldenNotePrefab
+      value: 
+      objectReference: {fileID: 100020, guid: 51e42bf6e0aed294b95aa1aaa3ad69e2, type: 3}
     - target: {fileID: 3617444274039170337, guid: cc6045c4778455646a68b169fbba1fc4, type: 3}
       propertyPath: m_Name
       value: RythmManager

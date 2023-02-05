@@ -21,7 +21,8 @@ public class EventManager
         OnCombo10,
         OnResetCombo,
         OnPlayerDeath,
-        OnStartSong
+        OnStartSong,
+        ExplodeAll
     }
     private Dictionary<Events, Action> eventDictionnary;
 

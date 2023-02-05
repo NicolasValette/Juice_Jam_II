@@ -28,6 +28,9 @@ public class GameHandler : MonoBehaviour
     private int _secondThresholdFire = 5;
     [SerializeField]
     private AudioSource _powerUp;
+    [SerializeField]
+    private int _GoldSpawn;
+    public int GoldSpawn { get { return _GoldSpawn; } }
     public int FirstfirstThresholdFire { get { return _firstThresholdFire; } }
     public int SecondThresholdFire { get { return _secondThresholdFire; } }
 

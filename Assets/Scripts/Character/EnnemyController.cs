@@ -9,17 +9,23 @@ public class EnnemyController : CharacterController
     [HideInInspector]
     public Transform PlayerPosition;
 
+    [SerializeField]
+    private Renderer _EnnemyRenderer;
+  
+
     #endregion Variables
 
     private void OnEnable()
     {
         LifePoint = _enemyData._maxHitPoints;
-        EventManager.StartListening(EventManager.Events.OnPlayerDeath, Explode);      
+        EventManager.StartListening(EventManager.Events.OnPlayerDeath, Explode);
+        EventManager.StartListening(EventManager.Events.ExplodeAll, Explode);
         Invoke("Explode", _enemyData._stayDuration);
     }
     private void OnDisable()
     {
-       EventManager.StopListening(EventManager.Events.OnPlayerDeath, Explode);
+        EventManager.StopListening(EventManager.Events.OnPlayerDeath, Explode);
+        EventManager.StopListening(EventManager.Events.ExplodeAll, Explode);
     }
 
     void Update()
@@ -39,7 +45,7 @@ public class EnnemyController : CharacterController
 
     private void OnCollisionEnter(Collision collision)
     {
-     //   Debug.Log("collision");
+        //   Debug.Log("collision");
         if (collision.gameObject.GetComponent<PlayerController>() != null)
         {
             Destroy(gameObject);
@@ -51,7 +57,7 @@ public class EnnemyController : CharacterController
         Debug.Log("Explode");
         ParticleSystem ps = GetComponent<ParticleSystem>();
         ps.Play();
-        GetComponent<Renderer>().enabled = false;
+        _EnnemyRenderer.enabled = false;
         EventManager.StopListening(EventManager.Events.OnNoteHit, Explode);
         Destroy(gameObject, ps.main.duration);
     }

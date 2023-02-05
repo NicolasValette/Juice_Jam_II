@@ -13,6 +13,8 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     private GameObject _shop= null;
     [SerializeField]
+    private GameObject _arrow = null;
+    [SerializeField]
     private AudioClip _messageGoldClip;
     [SerializeField]
     private AudioClip _menuHover;
@@ -121,6 +123,7 @@ public class MainMenu : MonoBehaviour
             _isReadyToPlay = true;
             _shop.GetComponentInChildren<Button>().enabled = false;
             _spaceImage.SetActive(true);
+            _arrow.SetActive(true);
         }
     }
     public void PlaySelectOption()

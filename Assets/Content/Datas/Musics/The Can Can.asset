@@ -16,3 +16,4 @@ MonoBehaviour:
   bPM: 78
   timeLine: {fileID: 0}
   beatsList: []
+  _demiBeatsBeforeStart: 8

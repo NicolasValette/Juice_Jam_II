@@ -9,11 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c6f9655af687d04a95d718160dc9429, type: 3}
-  m_Name: Blues For Elise
+  m_Script: {fileID: 11500000, guid: bfda56da833e2384a9677cd3c976a436, type: 3}
+  m_Name: MusicianRU01TimelineMenu
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 8300000, guid: 595f159f1d056f2428a0fdcb0a591d6e, type: 3}
-  bPM: 63.5
-  timeLine: {fileID: 0}
-  beatsList: []
-  _demiBeatsBeforeStart: 7
+  m_Version: 0
+  m_Tracks: []
+  m_FixedDuration: 0
+  m_EditorSettings:
+    m_Framerate: 60
+    m_ScenePreview: 1
+  m_DurationMode: 0
+  m_MarkerTrack: {fileID: 0}

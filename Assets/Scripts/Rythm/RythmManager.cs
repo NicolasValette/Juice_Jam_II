@@ -25,8 +25,14 @@ public class RythmManager : MonoBehaviour
     private float _perfectThreshold = 0.05f;
     [SerializeField]
     private GameObject _goldPrefab;
+    [SerializeField]
+    private Slider _slider;
+    [SerializeField]
+    private bool _isGameLevel;
+    [SerializeField]
+    private int _beatBeforeStart = 2;
     private int _musicIndex;
-  
+
 
     private AudioSource musicSource;
     private int _actualCombo = 0;
@@ -44,7 +50,7 @@ public class RythmManager : MonoBehaviour
     {
         get { return _numberOfPerfect; }
     }
-    public bool IsPlaying {get; private set;} = false;
+    public bool IsPlaying { get; private set; } = false;
 
     public float _secondePerBeat;           //Number of second for each beat.
     public float _songPositionInSeconds;    //Position in the active song, in seconds.
@@ -55,18 +61,19 @@ public class RythmManager : MonoBehaviour
 
     public float _previousBeat;
 
-    
+
     public static RythmManager Instance;
     private Queue<GameObject> _noteQueue;
     private int _eventInBeatListIndex = 0;
     private int _countBeforeGolden = 0;
-    public int CountBeforeGolden { get { return _countBeforeGolden;} }
+    private bool _noteSpawning = false;
+    public int CountBeforeGolden { get { return _countBeforeGolden; } }
     // Start is called before the first frame update
     void Awake()
     {
         Instance = this;
         InitAttributes();
-        
+
     }
 
     // Update is called once per frame
@@ -81,7 +88,8 @@ public class RythmManager : MonoBehaviour
     {
         _songPositionInSeconds = (float)AudioSettings.dspTime - _songDspTime;
         _songPositionInBeat = _songPositionInSeconds / _secondePerBeat;
-        if (_previousBeat + 1 <= _songPositionInBeat)
+        _slider.value = (_songPositionInSeconds * 100f) / _songTime;
+        if (_previousBeat + 1 <= _songPositionInBeat && _noteSpawning)
         {
             _previousBeat++;
             GameObject note;
@@ -104,6 +112,7 @@ public class RythmManager : MonoBehaviour
             Debug.Log("OnBeatChange");
             EventManager.TriggerEvent(EventManager.Events.OnBeatChange);
         }
+
         if (_eventInBeatListIndex < _musics[_musicIndex]._beatsList.Count && _musics[_musicIndex]._beatsList[_eventInBeatListIndex]._timeCode <= _songPositionInSeconds)
         {
             Debug.Log("beatlist++");
@@ -118,22 +127,25 @@ public class RythmManager : MonoBehaviour
     }
     private void InitAttributes()
     {
+
+        _slider.gameObject.SetActive(_isGameLevel);
+
         _musicIndex = Random.Range(0, _musics.Count);
         musicSource = GetComponent<AudioSource>();
         musicSource.clip = _musics[_musicIndex]._audioClip;
         _secondePerBeat = 60f / _musics[_musicIndex]._bPM;
-        
+
         _previousBeat = 0;
         _noteQueue = new Queue<GameObject>();
     }
     public bool IsNoteCorrectlyHit()
     {
-        
+
         if (!_noteQueue.TryPeek(out GameObject actualNote))
         {
             return false;
         }
-        
+
         float noteBeat = actualNote.GetComponent<MoveNote>().BeatOfNote - 1f;        //Because the math is done 1 beat behind;
         Debug.Log("Pos : " + _songPositionInBeat + ", Treshold : " + _threshold + ", noteBeat : " + noteBeat +
             "\ntest : _songPositionInBeat >= noteBeat - _threshold && _songPositionInBeat <= noteBeat + _threshold = " +
@@ -145,7 +157,7 @@ public class RythmManager : MonoBehaviour
         //Debug.Log("note : " + noteBeat);
         //Debug.Log("pos : " + _songPositionInBeat);
         bool isCorrect = (_songPositionInBeat >= noteBeat - _threshold && _songPositionInBeat <= noteBeat + _threshold);
-        bool isGood = (_songPositionInBeat >= noteBeat - (_threshold/2f) && _songPositionInBeat <= noteBeat + (_threshold/2f));
+        bool isGood = (_songPositionInBeat >= noteBeat - (_threshold / 2f) && _songPositionInBeat <= noteBeat + (_threshold / 2f));
         bool isPerfect = (_songPositionInBeat >= noteBeat - _perfectThreshold && _songPositionInBeat <= noteBeat + _perfectThreshold);
         //Debug.Log("correct : " + isCorrect);
         //Debug.Log("Good : " + isGood);
@@ -155,8 +167,8 @@ public class RythmManager : MonoBehaviour
         {
             if (_actualCombo >= GameHandler.Instance.FirstfirstThresholdFire && GameHandler.Instance.ComboMultipl == 1)
             {
-               GameHandler.Instance.ComboMultipl = 2;
-               GameHandler.Instance.PowerUp();
+                GameHandler.Instance.ComboMultipl = 2;
+                GameHandler.Instance.PowerUp();
             }
             if (_actualCombo >= GameHandler.Instance.SecondThresholdFire && GameHandler.Instance.ComboMultipl == 2)
             {
@@ -171,7 +183,7 @@ public class RythmManager : MonoBehaviour
             _actualCombo = 0;
             GameHandler.Instance.ComboMultipl = 1;
         }
-        if  (isGood)
+        if (isGood)
         {
             _numberOfGood++;
         }
@@ -179,7 +191,7 @@ public class RythmManager : MonoBehaviour
         {
             _numberOfPerfect++;
         }
-        
+
         // return (_songPositionInBeat >= _previousBeat - _threshold && _songPositionInBeat <= _previousBeat + _threshold);
         return isCorrect;
     }
@@ -190,7 +202,14 @@ public class RythmManager : MonoBehaviour
         _songTimeInBeats = _songTime * _secondePerBeat;
         musicSource.Play();
         IsPlaying = true;
+        StartCoroutine(WaitBeforStart(_musics[_musicIndex].DemiBeatsBeforsStart));
         EventManager.TriggerEvent(EventManager.Events.OnStartSong);
+    }
+    public IEnumerator WaitBeforStart(int nbdemiBeatBeat)
+    {
+        Debug.Log("nbdemi : " + nbdemiBeatBeat + "Wait : " + ((float)(nbdemiBeatBeat / 2f) - 1f));
+        yield return new WaitForSeconds(((nbdemiBeatBeat / 2) - 1) * _secondePerBeat);
+        _noteSpawning = true;
     }
     public void Stop()
     {

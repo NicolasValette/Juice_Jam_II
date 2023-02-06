@@ -6234,29 +6234,21 @@ PrefabInstance:
       propertyPath: _countdownText
       value: 
       objectReference: {fileID: 1682045276}
-    - target: {fileID: 1464363488082565915, guid: 23317d9926ee31d43ae3bc5fe1013120, type: 3}
-      propertyPath: _music
-      value: 
-      objectReference: {fileID: 11400000, guid: 7f9c5943a807945418d5f5c68e468979, type: 2}
-    - target: {fileID: 1464363488082565915, guid: 23317d9926ee31d43ae3bc5fe1013120, type: 3}
-      propertyPath: _goldPrefab
-      value: 
-      objectReference: {fileID: 3103732499986250126, guid: 39c7301d6fec63f46b369793565f467d, type: 3}
-    - target: {fileID: 1464363488082565915, guid: 23317d9926ee31d43ae3bc5fe1013120, type: 3}
-      propertyPath: _musics.Array.size
-      value: 2
+    - target: {fileID: 190938792581021381, guid: 23317d9926ee31d43ae3bc5fe1013120, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 190938792581021381, guid: 23317d9926ee31d43ae3bc5fe1013120, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 190938792581021381, guid: 23317d9926ee31d43ae3bc5fe1013120, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1464363488082565915, guid: 23317d9926ee31d43ae3bc5fe1013120, type: 3}
-      propertyPath: _musics.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 7f9c5943a807945418d5f5c68e468979, type: 2}
-    - target: {fileID: 1464363488082565915, guid: 23317d9926ee31d43ae3bc5fe1013120, type: 3}
-      propertyPath: _musics.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: 7bd3fdd457cfdc34b960d891a09fe0fb, type: 2}
-    - target: {fileID: 1464363488082565916, guid: 23317d9926ee31d43ae3bc5fe1013120, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
+      propertyPath: _isGameLevel
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7627595948038441997, guid: 23317d9926ee31d43ae3bc5fe1013120, type: 3}
       propertyPath: m_RootOrder
@@ -8994,7 +8986,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6041724214053965196, guid: 35306e0479beb0c4a9a391a72ca0eee6, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6041724214053965197, guid: 35306e0479beb0c4a9a391a72ca0eee6, type: 3}
+      propertyPath: _GoldSpawn
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6041724214053965197, guid: 35306e0479beb0c4a9a391a72ca0eee6, type: 3}
       propertyPath: IsStartScreen

@@ -9,7 +9,7 @@ public class GameHandler : MonoBehaviour
     private int _winPrice;
     public int WinPrice { get { return _winPrice; } }
     public int goldAmount = 0;
-    private GameData _gameData;
+    public GameData _gameData;
     public static GameHandler Instance;
 
     [SerializeField]

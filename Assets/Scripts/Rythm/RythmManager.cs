@@ -68,7 +68,6 @@ public class RythmManager : MonoBehaviour
     private int _countBeforeGolden = 0;
     private bool _noteSpawning = false;
     public int CountBeforeGolden { get { return _countBeforeGolden; } }
-    // Start is called before the first frame update
     void Awake()
     {
         Instance = this;
@@ -93,24 +92,29 @@ public class RythmManager : MonoBehaviour
         {
             _previousBeat++;
             GameObject note;
-            if (_countBeforeGolden >= GameHandler.Instance.GoldSpawn)
+            if (_noteSpawning)
             {
-                note = Instantiate(_GoldenNotePrefab, SpawnNotePos.position, SpawnNotePos.rotation);
-                _countBeforeGolden = 0;
+                if (_countBeforeGolden >= GameHandler.Instance.GoldSpawn)
+                {
+                    note = Instantiate(_GoldenNotePrefab, SpawnNotePos.position, SpawnNotePos.rotation);
+                    _countBeforeGolden = 0;
+                }
+                else
+                {
+                    note = Instantiate(_notePrefab, SpawnNotePos.position, SpawnNotePos.rotation);
+                    _countBeforeGolden++;
+                }
+                if (_noteQueue.Count >= BeatsShown)
+                {
+                    GameObject missedNote = _noteQueue.Dequeue();
+                    //missedNote.GetComponent<MoveNote>().Miss();
+                }
+
+                _noteQueue.Enqueue(note);
+                Debug.Log("OnBeatChange");
+                EventManager.TriggerEvent(EventManager.Events.OnBeatChange);
+
             }
-            else
-            {
-                note = Instantiate(_notePrefab, SpawnNotePos.position, SpawnNotePos.rotation);
-                _countBeforeGolden++;
-            }
-            if (_noteQueue.Count >= BeatsShown)
-            {
-                GameObject missedNote = _noteQueue.Dequeue();
-                //missedNote.GetComponent<MoveNote>().Miss();
-            }
-            _noteQueue.Enqueue(note);
-            Debug.Log("OnBeatChange");
-            EventManager.TriggerEvent(EventManager.Events.OnBeatChange);
         }
 
         if (_eventInBeatListIndex < _musics[_musicIndex]._beatsList.Count && _musics[_musicIndex]._beatsList[_eventInBeatListIndex]._timeCode <= _songPositionInSeconds)
@@ -202,7 +206,7 @@ public class RythmManager : MonoBehaviour
         _songTimeInBeats = _songTime * _secondePerBeat;
         musicSource.Play();
         IsPlaying = true;
-        StartCoroutine(WaitBeforStart(_musics[_musicIndex].DemiBeatsBeforsStart));
+        StartCoroutine(WaitBeforStart(_musics[_musicIndex].DemiBeatsBeforsStart));      // Play the intro before start spawning notes et beat rythm
         EventManager.TriggerEvent(EventManager.Events.OnStartSong);
     }
     public IEnumerator WaitBeforStart(int nbdemiBeatBeat)

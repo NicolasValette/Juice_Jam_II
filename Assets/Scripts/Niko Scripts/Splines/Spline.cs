@@ -47,6 +47,7 @@ public class Spline : MonoBehaviour
         _pointABC.position = Vector3.Lerp(_pointAB.position, _pointBC.position, _interpolate);
         _pointBCD.position = Vector3.Lerp(_pointBC.position, _pointCD.position, _interpolate);
 
+        
         _pointABCD.position = Vector3.Lerp(_pointABC.position, _pointBCD.position, _interpolate);
     }
 }

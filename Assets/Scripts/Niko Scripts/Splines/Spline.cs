@@ -29,6 +29,7 @@ public class Spline : MonoBehaviour
     private Transform _pointABCD;
 
     private float _interpolate;
+    private bool _isStarted;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,15 +40,22 @@ public class Spline : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _interpolate = (_interpolate + Time.deltaTime) %1f;
-        _pointAB.position = Vector3.Lerp(_pointA.position, _pointB.position, _interpolate);
-        _pointBC.position = Vector3.Lerp(_pointB.position, _pointC.position, _interpolate);
-        _pointCD.position = Vector3.Lerp(_pointC.position, _pointD.position, _interpolate);
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            _isStarted = true;
+        }
+        if (_isStarted)
+        {
+            _interpolate = (_interpolate + Time.deltaTime);
+            _pointAB.position = Vector3.Lerp(_pointA.position, _pointB.position, _interpolate);
+            _pointBC.position = Vector3.Lerp(_pointB.position, _pointC.position, _interpolate);
+            _pointCD.position = Vector3.Lerp(_pointC.position, _pointD.position, _interpolate);
 
-        _pointABC.position = Vector3.Lerp(_pointAB.position, _pointBC.position, _interpolate);
-        _pointBCD.position = Vector3.Lerp(_pointBC.position, _pointCD.position, _interpolate);
+            _pointABC.position = Vector3.Lerp(_pointAB.position, _pointBC.position, _interpolate);
+            _pointBCD.position = Vector3.Lerp(_pointBC.position, _pointCD.position, _interpolate);
 
-        
-        _pointABCD.position = Vector3.Lerp(_pointABC.position, _pointBCD.position, _interpolate);
+
+            _pointABCD.position = Vector3.Lerp(_pointABC.position, _pointBCD.position, _interpolate);
+        }
     }
 }

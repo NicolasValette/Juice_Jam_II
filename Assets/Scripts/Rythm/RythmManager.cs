@@ -220,6 +220,17 @@ public class RythmManager : MonoBehaviour
         IsPlaying = true;
         musicSource.Stop();
     }
+    public void Pause()
+    {
+        musicSource.Pause();
+        Debug.Log ("Time pause : " + AudioSettings.dspTime);
+    }
+    public void Resume()
+    {
+        musicSource.UnPause();
+
+        Debug.Log("Time unpause : " + AudioSettings.dspTime);
+    }
     public void WinGold(Transform noteTransform)
     {
         if (GameHandler.Instance.IsGameOn)

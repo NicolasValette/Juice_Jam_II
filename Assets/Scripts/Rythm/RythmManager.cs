@@ -67,6 +67,8 @@ public class RythmManager : MonoBehaviour
     private int _eventInBeatListIndex = 0;
     private int _countBeforeGolden = 0;
     private bool _noteSpawning = false;
+    private double _pauseOffset;
+    private double _pauseTime;
     public int CountBeforeGolden { get { return _countBeforeGolden; } }
     void Awake()
     {
@@ -138,7 +140,6 @@ public class RythmManager : MonoBehaviour
         musicSource = GetComponent<AudioSource>();
         musicSource.clip = _musics[_musicIndex]._audioClip;
         _secondePerBeat = 60f / _musics[_musicIndex]._bPM;
-
         _previousBeat = 0;
         _noteQueue = new Queue<GameObject>();
     }
@@ -204,6 +205,7 @@ public class RythmManager : MonoBehaviour
         _songDspTime = (float)AudioSettings.dspTime;
         _songTime = musicSource.clip.length;
         _songTimeInBeats = _songTime * _secondePerBeat;
+        _pauseOffset= 0d;
         musicSource.Play();
         IsPlaying = true;
         StartCoroutine(WaitBeforStart(_musics[_musicIndex].DemiBeatsBeforsStart));      // Play the intro before start spawning notes et beat rythm
@@ -223,13 +225,18 @@ public class RythmManager : MonoBehaviour
     public void Pause()
     {
         musicSource.Pause();
-        Debug.Log ("Time pause : " + AudioSettings.dspTime);
+        _pauseTime = AudioSettings.dspTime;
+        Debug.Log ("Time pause : " + GetSongTime());
     }
     public void Resume()
     {
         musicSource.UnPause();
-
-        Debug.Log("Time unpause : " + AudioSettings.dspTime);
+        _pauseOffset += (AudioSettings.dspTime - _pauseTime);
+        Debug.Log("Time unpause : " + GetSongTime() + " Pause Time : " + _pauseTime);
+    }
+    public double GetSongTime ()
+    {
+        return AudioSettings.dspTime - _pauseOffset;
     }
     public void WinGold(Transform noteTransform)
     {

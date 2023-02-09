@@ -13,3 +13,6 @@ The game must be Juicy, ant the theme for this game jam : "PAYING THE PRIZE".
 * Nicolas
 
 # Release version
+
+# Credit
+Vinyl record by Poly by Google [CC-BY] via Poly Pizza

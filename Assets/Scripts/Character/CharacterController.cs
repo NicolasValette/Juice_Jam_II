@@ -11,6 +11,10 @@ public abstract class CharacterController : MonoBehaviour
     public EnemyData _enemyData { get { return enemyData; } }
 
     [SerializeField]
+    Animator animator;
+    public Animator _animator { get { return animator; } }
+
+    [SerializeField]
     bool IsPlayer = false;
     public bool _IsPlayer { get { return IsPlayer; } }
 
@@ -43,9 +47,7 @@ public abstract class CharacterController : MonoBehaviour
     void OnCollisionEnter(Collision collision) // object is collided by anther object, verify if the other is an ennemy bullet
     {
         ProjectileController bulletController = collision.transform.GetComponent<ProjectileController>();
-
-        if(bulletController != null) Debug.Log("OnCollisionEnter bulletController");
-
+        EnnemyController ennemyController = collision.transform.GetComponent<EnnemyController>();
 
         if (LifePoint > 0)
         {
@@ -55,7 +57,11 @@ public abstract class CharacterController : MonoBehaviour
                 Debug.Log("LifePoint > 0 OnCollisionEnter bulletController");
                 // Receive damages from the bullet                  
                 ReceiveDamages(bulletController.GetDamages());
-            }            
+            } 
+            else if(IsPlayer && ennemyController != null)
+            {
+                ReceiveDamages(ennemyController.enemyData._collisionDamages);
+            }
         }
         else
         {
@@ -63,8 +69,9 @@ public abstract class CharacterController : MonoBehaviour
         }
     }
 
-    protected void ReceiveDamages(int damages) // the object receives damages from a colliding ennemy bullet
+    public void ReceiveDamages(int damages) // the object receives damages from a colliding ennemy bullet
     {
+        Debug.Log("ReceiveDamages");
         // verify if the object is not invincible
         if (MaxLifePoint != -1)
         {
@@ -106,38 +113,37 @@ public abstract class CharacterController : MonoBehaviour
 
     void DestroySelf() // destroy itself and depending objects
     {
-     /*   if (FiringParticleSystem != null)
-            FiringParticleSystem.Stop();
-        */
-
-        if (HowDestroy == HowDestroyEnum.DestroyObject)
-        {
-            // destroy the object
-         //   Destroy(CanonTurret);
-            Destroy(gameObject);
-
-        }
-        else if (HowDestroy == HowDestroyEnum.DisableComponent)
-        {
-            // disable the object
-            this.enabled = false;
-        }
-
-        InstantiateFXForDestruction();
-        PlayDestructionSound();
-
-        // Open the Win Menu if the Player's tank is destroyed 
         if (IsPlayer)
         {
-            // TODO Event
-        //    TankDestroyed?.Invoke();
-        //  playerController.gameStarted = false;
+            animator.CrossFade("Die", 0.2f);
+            GetComponent<AudioSource>()?.Play();
+            EventManager.TriggerEvent(EventManager.Events.OnPlayerDeath);
+            Invoke("Destroying", 2f);
+            
         }
+        else
+        {
+            if (HowDestroy == HowDestroyEnum.DestroyObject)
+            {
+                Destroying();
+            }
+            else if (HowDestroy == HowDestroyEnum.DisableComponent)
+            {
+                this.enabled = false;
+            }
+        }
+        InstantiateFXForDestruction();
+        PlayDestructionSound();
+    }
+
+    void Destroying()
+    {
+        Destroy(gameObject);
     }
 
     void InstantiateFXForDestruction()
     {
-        if (enemyData._fXSpawnerDestroyedObjPrefab != null)
+        if (enemyData != null && enemyData._fXSpawnerDestroyedObjPrefab != null)
         {
             // Instantiate the particle system at the impact position
             GameObject spawner = Instantiate<GameObject>(enemyData._fXSpawnerDestroyedObjPrefab, DestroyedFXPositionObj.transform.position,
@@ -152,7 +158,10 @@ public abstract class CharacterController : MonoBehaviour
             DestroyedSoundPlayer.enabled = true;
             DestroyedSoundPlayer.Stop();
             DestroyedSoundPlayer.loop = false;
-            DestroyedSoundPlayer.PlayOneShot(enemyData._destroyedSound);
+            if (enemyData != null)           
+                DestroyedSoundPlayer.PlayOneShot(enemyData._destroyedSound);
+            else if (IsPlayer == true)
+                DestroyedSoundPlayer.PlayOneShot(transform.GetComponent<PlayerController>()._playerData._destroyedSound);
         }
 
     }

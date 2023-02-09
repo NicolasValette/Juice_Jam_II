@@ -8029,6 +8029,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stave
       objectReference: {fileID: 0}
+    - target: {fileID: 6926717867289327316, guid: cd87427c38d187c4f8850d4560d70124, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6926717867289327319, guid: cd87427c38d187c4f8850d4560d70124, type: 3}
       propertyPath: m_RootOrder
       value: 0

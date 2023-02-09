@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6192883215628665650}
   - component: {fileID: 6192883215628665649}
-  - component: {fileID: 6192883215628665648}
   - component: {fileID: 6192883215628668111}
   - component: {fileID: -7690607106287641317}
   - component: {fileID: -3729440599717132919}
@@ -47,48 +46,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6192883215628668110}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &6192883215628665648
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6192883215628668110}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 7e15ff590f8c75c41a988901cf4f9cae, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!135 &6192883215628668111
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -116,7 +73,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 8
   m_CollisionDetection: 0
 --- !u!199 &-3729440599717132919
 ParticleSystemRenderer:
@@ -4968,6 +4925,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: efa4cab4b0227c1478375fe538ffe9d1, type: 2}
+  animator: {fileID: 0}
   IsPlayer: 0
   playerController: {fileID: 0}
   MaxLifePoint: 1
@@ -4976,6 +4934,8 @@ MonoBehaviour:
   DestroyedFXPositionObj: {fileID: 0}
   DestroyedSoundPlayer: {fileID: 0}
   PlayerPosition: {fileID: 0}
+  _EnnemyRenderer: {fileID: 693220704582164370}
+  _audioSource: {fileID: 0}
 --- !u!1001 &706896837145162354
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5045,6 +5005,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b29c3addc4240254785fef8671d1291b, type: 3}
+--- !u!23 &693220704582164370 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 23000010529615328, guid: b29c3addc4240254785fef8671d1291b, type: 3}
+  m_PrefabInstance: {fileID: 706896837145162354}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &702934345916731436 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000013137715806, guid: b29c3addc4240254785fef8671d1291b, type: 3}

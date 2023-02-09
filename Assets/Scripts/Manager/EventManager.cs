@@ -14,7 +14,15 @@ public class EventManager
         EnnemySpawn,
         BiggerEnnemy,
         EndSong,
-        Boss
+        LaunchWave,
+        Boss,
+        OnGoldWin,
+        OnCombo5,
+        OnCombo10,
+        OnResetCombo,
+        OnPlayerDeath,
+        OnStartSong,
+        ExplodeAll
     }
     private Dictionary<Events, Action> eventDictionnary;
 
@@ -59,6 +67,11 @@ public class EventManager
         {
             eventToStopListen -= action;
             Instance.eventDictionnary[eventName] = eventToStopListen;
+            if (Instance.eventDictionnary[eventName] == null)
+            {
+                Instance.eventDictionnary.Remove(eventName);
+                
+            }
         }
     }
 
@@ -69,7 +82,7 @@ public class EventManager
         if (Instance.eventDictionnary.TryGetValue(eventName, out eventToTrigger))
         {
             //Debug.Log("Action : " + eventToTrigger.ToString());
-            eventToTrigger.Invoke();
+            eventToTrigger?.Invoke();
         }
     }
 

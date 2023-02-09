@@ -26,6 +26,7 @@ public class WeaponBehaviour : MonoBehaviour
     [SerializeField]
     protected List<ProjectileSpawnerData> ProjectileSpawnersList = new List<ProjectileSpawnerData>();
 
+    private float _timeSinceLastShot;
     #endregion Variables
 
     // Start is called before the first frame update
@@ -36,20 +37,28 @@ public class WeaponBehaviour : MonoBehaviour
 
     public void OnEnable()
     {
-        if (!Locked && weaponData._autoFire)
-            InvokeRepeating("fireProjectile", 0, weaponData._fireRate);
+        //if (!Locked && weaponData._autoFire)
+        //    InvokeRepeating("fireProjectile", 0, weaponData._fireRate);
+        Unlock();
     }
 
     // Update is called once per frame
     void Update()
-    {        
-
+    {
+        Debug.Log("fire");
+        if (!Locked)
+        {
+            StartCoroutine(fireProjectile2());
+            Lock();
+        }
     }
+   
+
 
     public void Fire(CharacterController _characterController)
     {
         characterController = _characterController;
-
+        Debug.Log("ALLO");
         if (Locked == false)
         {
             Locked = true;
@@ -66,6 +75,10 @@ public class WeaponBehaviour : MonoBehaviour
     {
         Locked = false;
     }
+    public void Lock()
+    {
+        Locked = true;
+    }
 
     private void fireProjectile()
     {
@@ -73,6 +86,16 @@ public class WeaponBehaviour : MonoBehaviour
         {
             InstantiateBulletPrefab(ProjectileSpawnersList[i]);
         }
+    }
+    private IEnumerator fireProjectile2()
+    {
+        Debug.Log("Fire");
+        for (int i = 0; i < ProjectileSpawnersList.Count; i++)
+        {
+            InstantiateBulletPrefab(ProjectileSpawnersList[i]);
+        }
+        yield return new WaitForSeconds(60f/(weaponData._fireRate * GameHandler.Instance.ComboMultipl));
+        Unlock();
     }
 
     protected void InstantiateBulletPrefab(ProjectileSpawnerData bulletSpawner) // create the bullet

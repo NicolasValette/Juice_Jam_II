@@ -5,12 +5,15 @@ public class MoveNote : MonoBehaviour
     public float BeatOfNote;
     private float timer = 0f;
     private Animator anim;
+    [SerializeField]
+    private bool _IsGold = false;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         BeatOfNote = RythmManager.Instance._previousBeat + 2f;
-        transform.DOMove(RythmManager.Instance.RemoveNotePos.position, (RythmManager.Instance.BeatsShown * RythmManager.Instance._secondePerBeat) * 2);
+        transform.DOMove(RythmManager.Instance.RemoveNotePos.position, (RythmManager.Instance.BeatsShown * RythmManager.Instance._secondePerBeat) * 2).OnKill(Miss);
+        
         anim.SetFloat("Speed", 1f);
         //Debug.Log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~Spawn : " + gameObject.transform.position);
     }
@@ -36,6 +39,7 @@ public class MoveNote : MonoBehaviour
     }
     public void Miss()
     {
+        anim.SetBool("Dead", true);
         Destroy(gameObject);
     }
     public void Hit()
@@ -46,6 +50,12 @@ public class MoveNote : MonoBehaviour
         //gameObject.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
         
         anim.SetBool("Dead", true);
+
+        RythmManager.Instance.WinGold(transform);
+        if (_IsGold)
+        {
+            EventManager.TriggerEvent(EventManager.Events.ExplodeAll);
+        }
         Destroy(gameObject, ps.main.duration);
 
     }

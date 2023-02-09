@@ -11,7 +11,8 @@ public class PlayerController : CharacterController
 
     [SerializeField]
     PlayerData playerData;
-
+    public PlayerData _playerData { get { return playerData; } }
+    
     [SerializeField]
     float actualSpeed = 1.0f;
 
@@ -44,6 +45,11 @@ public class PlayerController : CharacterController
     {
         HandlePlayerMovment();
     }
+
+    public void Death()
+    {
+        Debug.Log("dead");
+    }
     #region Movement
     void HandlePlayerMovment()
     {
@@ -73,7 +79,7 @@ public class PlayerController : CharacterController
         if (weaponSpawnedObject != null)
             Destroy(weaponSpawnedObject);
     }
-
+    
     void SpawnActualWeapon(int index)
     {
         weaponSpawnedObject = (GameObject)Instantiate(playerData._weapons._weaponsList[index]._weaponPrefab, 

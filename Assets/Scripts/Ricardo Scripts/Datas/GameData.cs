@@ -9,6 +9,14 @@ public class GameData : ScriptableObject
 {
     #region Variables
     [SerializeField]
+    int PerfectNoteAmountToFastFire = 5;
+    public int _PerfectNoteAmountToFastFire { get { return PerfectNoteAmountToFastFire; } }
+   
+    [SerializeField]
+    int PerfectNoteAmountToTurboFire = 10;
+    public int _PerfectNoteAmountToTurboFire { get { return PerfectNoteAmountToTurboFire; } }
+
+    [SerializeField]
     PlayerData player; 
     public PlayerData _player { get { return player; } }
 

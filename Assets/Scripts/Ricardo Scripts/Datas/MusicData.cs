@@ -35,6 +35,20 @@ public class MusicData : ScriptableObject
     List<BeatData> beatsList;
     public List<BeatData> _beatsList { get{ return beatsList; } }
 
+    [SerializeField]
+    private int _demiBeatsBeforeStart;
+    public int DemiBeatsBeforsStart
+    {
+        get
+        {
+            return _demiBeatsBeforeStart;
+        }
+        private set
+        {
+            value = _demiBeatsBeforeStart;
+        }
+    }
+
     #endregion Variables
 
 

@@ -24,6 +24,10 @@ public class WeaponData : ScriptableObject
     public float _fireRate { get { return fireRate; } }
 
     [SerializeField]
+    float fastFireRate;
+    public float _fastFireRate { get { return fastFireRate; } }
+
+    [SerializeField]
     float turboFireRate;
     public float _turboFireRate { get { return turboFireRate; } }
 

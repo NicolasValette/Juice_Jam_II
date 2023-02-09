@@ -9193,7 +9193,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1945622150}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36eb1c14de1cfbe4589736e53c72df82, type: 3}
   m_Name: 
@@ -9349,7 +9349,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6041724214053965196, guid: 35306e0479beb0c4a9a391a72ca0eee6, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6041724214053965197, guid: 35306e0479beb0c4a9a391a72ca0eee6, type: 3}
       propertyPath: _GoldSpawn

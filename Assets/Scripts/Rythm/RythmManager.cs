@@ -227,6 +227,8 @@ public class RythmManager : MonoBehaviour
         musicSource.Pause();
         _pauseTime = AudioSettings.dspTime;
         Debug.Log ("Time pause : " + GetSongTime());
+        Debug.Log("beat : " + _previousBeat);
+        Debug.Log("beat time: " + _previousBeat * _secondePerBeat);
     }
     public void Resume()
     {

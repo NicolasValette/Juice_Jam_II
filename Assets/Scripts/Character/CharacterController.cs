@@ -113,35 +113,27 @@ public abstract class CharacterController : MonoBehaviour
 
     void DestroySelf() // destroy itself and depending objects
     {
-        /*   if (FiringParticleSystem != null)
-               FiringParticleSystem.Stop();
-           */
-        // Open the Win Menu if the Player's tank is destroyed 
         if (IsPlayer)
         {
             animator.CrossFade("Die", 0.2f);
-            Invoke("Destroying", 5);
-            // TODO Event
-            //    TankDestroyed?.Invoke();
-            //  playerController.gameStarted = false;
+            GetComponent<AudioSource>()?.Play();
+            EventManager.TriggerEvent(EventManager.Events.OnPlayerDeath);
+            Invoke("Destroying", 2f);
+            
         }
         else
         {
             if (HowDestroy == HowDestroyEnum.DestroyObject)
             {
-                // destroy the object
-                //   Destroy(CanonTurret);
                 Destroying();
-
             }
             else if (HowDestroy == HowDestroyEnum.DisableComponent)
             {
-                // disable the object
                 this.enabled = false;
             }
         }
         InstantiateFXForDestruction();
-        PlayDestructionSound();       
+        PlayDestructionSound();
     }
 
     void Destroying()

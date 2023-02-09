@@ -145,12 +145,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d88e65d21df1fb4cbdbced3164e1541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _music: {fileID: 11400000, guid: 4f444fa3e038cab4cb7e917049ce24c7, type: 2}
+  _musics:
+  - {fileID: 11400000, guid: 7f9c5943a807945418d5f5c68e468979, type: 2}
+  - {fileID: 11400000, guid: 7bd3fdd457cfdc34b960d891a09fe0fb, type: 2}
   _threshold: 0.2
   SpawnNotePos: {fileID: 0}
   RemoveNotePos: {fileID: 0}
   _notePrefab: {fileID: 100020, guid: 36f6d7a63e7bc1b48af8f9d067592ed7, type: 3}
+  _GoldenNotePrefab: {fileID: 0}
   _perfectThreshold: 0.05
+  _goldPrefab: {fileID: 3103732499986250126, guid: 39c7301d6fec63f46b369793565f467d, type: 3}
+  _slider: {fileID: 0}
+  _isGameLevel: 0
   _secondePerBeat: 0
   _songPositionInSeconds: 0
   _songPositionInBeat: 0

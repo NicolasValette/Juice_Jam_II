@@ -49,4 +49,12 @@ MonoBehaviour:
   _sceneName:
   - WIP Scene Niko
   _shopSceneName: WIP Menu
+  _startSceneName: WIP Menu
   _winSceneName: Win Scene
+  _gameOverSceneName: Game Over
+  _firstThresholdFire: 5
+  _secondThresholdFire: 5
+  IsShopLevel: 0
+  IsStartScreen: 1
+  IsGameOver: 0
+  ComboMultipl: 1

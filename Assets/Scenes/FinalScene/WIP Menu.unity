@@ -5316,6 +5316,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameHandler
       objectReference: {fileID: 0}
+    - target: {fileID: 6041724214053965196, guid: 35306e0479beb0c4a9a391a72ca0eee6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6041724214053965197, guid: 35306e0479beb0c4a9a391a72ca0eee6, type: 3}
       propertyPath: _powerUp
       value: 

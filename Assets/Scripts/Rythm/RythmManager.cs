@@ -16,6 +16,8 @@ public class RythmManager : MonoBehaviour
     [SerializeField]
     public Transform RemoveNotePos;
     [SerializeField]
+    public Transform MiddleStavePos;
+    [SerializeField]
     public float BeatsShown { get; private set; } = 2f;
     [SerializeField]
     private GameObject _notePrefab;
@@ -30,6 +32,7 @@ public class RythmManager : MonoBehaviour
     [SerializeField]
     private bool _isGameLevel;
     [SerializeField]
+    public float NoteSpeed = 2f;
     private int _beatBeforeStart = 2;
     private int _musicIndex;
 
@@ -90,7 +93,7 @@ public class RythmManager : MonoBehaviour
         _songPositionInSeconds = (float)AudioSettings.dspTime - _songDspTime;
         _songPositionInBeat = _songPositionInSeconds / _secondePerBeat;
         _slider.value = (_songPositionInSeconds * 100f) / _songTime;
-        if (_previousBeat + 1 <= _songPositionInBeat && _noteSpawning)
+        if (_previousBeat + 1 <= _songPositionInBeat)
         {
             _previousBeat++;
             GameObject note;

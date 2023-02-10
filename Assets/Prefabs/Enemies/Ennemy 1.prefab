@@ -1477,8 +1477,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.016464932, g: 0.07444293, b: 0.6981132, a: 1}
-        key1: {r: 1, g: 0.47457013, b: 0, a: 1}
+        key0: {r: 1, g: 0.030305512, b: 0, a: 1}
+        key1: {r: 0.990566, g: 0.8676415, b: 0, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -4935,7 +4935,6 @@ MonoBehaviour:
   DestroyedSoundPlayer: {fileID: 0}
   PlayerPosition: {fileID: 0}
   _EnnemyRenderer: {fileID: 693220704582164370}
-  _audioSource: {fileID: 0}
 --- !u!1001 &706896837145162354
 PrefabInstance:
   m_ObjectHideFlags: 0

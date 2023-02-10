@@ -12,10 +12,8 @@ public class MoveNote : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         BeatOfNote = RythmManager.Instance._previousBeat + 2f;
-        transform.DOMove(RythmManager.Instance.RemoveNotePos.position, (RythmManager.Instance.BeatsShown * RythmManager.Instance._secondePerBeat) * 2).OnKill(Miss);
-        
+        transform.DOMove(RythmManager.Instance.RemoveNotePos.position, (RythmManager.Instance.BeatsShown * RythmManager.Instance._secondePerBeat) * 2f).OnKill(Miss);
         anim.SetFloat("Speed", 1f);
-        //Debug.Log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~Spawn : " + gameObject.transform.position);
     }
     // Update is called once per frame
     void Update()
@@ -41,6 +39,19 @@ public class MoveNote : MonoBehaviour
     {
         anim.SetBool("Dead", true);
         Destroy(gameObject);
+    }
+    public void Middle(int waypoint)
+    {
+        Debug.Log("Waypoint : " + waypoint);
+        if (waypoint == 1) 
+        {
+            Debug.Log("Middle");
+        }
+        else if (waypoint == 2)
+        {
+            Debug.Log("End");
+        }
+        //transform.DOMove(RythmManager.Instance.RemoveNotePos.position, RythmManager.Instance.BeatsShown * RythmManager.Instance._secondePerBeat).OnKill(Miss);
     }
     public void Hit()
     {
